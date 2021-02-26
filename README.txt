@@ -5,7 +5,7 @@
        TEAM
 -------------------
 Jakob Clapsaddle
-
+Victoria Williamson .. the cool one
 
  About the project
 -------------------
