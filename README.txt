@@ -6,6 +6,7 @@
 -------------------
 Jakob Clapsaddle
 Victoria Williamson .. the cool one
+JT Brewer
 
  About the project
 -------------------
