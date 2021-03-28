@@ -235,6 +235,21 @@ function radioTableRow($radioTableRowHeader, $radioButtonValues, $tableName=fals
     return asRow($tdsToSend);
 }
 
+   
+  /** Return $_POST[$key] (but don't generate a warning, if it doesn't exist). */
+  function getPost($key,$dflt="") { 
+      $formValue = safeLookup($_POST,$key,$dflt);
+      return array_key_exists($key,$_POST) && is_string($formValue)  
+             ? stripslashes($formValue)    // TODO: call `deepStripSlashes` here, even if non-string.
+             : $formValue; 
+    }
+  
+  /** strToHtml: quote a (raw) string to html. */
+  function strToHtml($str) { return nl2br(htmlspecialchars($str,ENT_QUOTES/*|ENT_HTML5  (php 5.4.0) */)); }
+  
+  /* Return an element of $_POST, sanitized as html (or, $dflt if the key isn't in $_POST). */
+  function post2html($indx, $dflt='') { return strToHtml(getPost($indx,$dflt)); }
+
 /*
  * radioTable : array of strings, array of strings  ->  string
  * $tableName : Default false. If false, the table tab will have no name or id
