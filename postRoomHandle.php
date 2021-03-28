@@ -4,9 +4,9 @@
   error_reporting (E_ALL|E_STRICT); //           
 
   date_default_timezone_set('America/New_York'); //          
-  require_once('../utils/utils.php');
-  require_once('../utils/validate.php');
-  require_once('../utils/constants.php');  // Use `$GLOBALS` to use these values, inside a function.
+  require_once('utils.php');
+  require_once('validate.php');
+  require_once("constants.php');  // Use `$GLOBALS` to use these values, inside a function.
 ?>
 <!DOCTYPE HTML>
 
