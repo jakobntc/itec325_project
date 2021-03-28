@@ -1,6 +1,6 @@
 <?php
-require_once("utils.php");
-require_once("constants.php");
+require_once("../utils/utils.php");
+require_once("../utils/constants.php");
 ?>
 
 <!doctype html>
@@ -44,8 +44,14 @@ require_once("constants.php");
                     </li>
                     <li style="text-allign: right;">
                         <div class="d-grid gap-2 d-md-flex justify-content-md-end">
-                            <button class="btn btn-primary me-md-2" type="button">Login</button>
-                            <button class="btn btn-primary me-md-2" type="button">Sign up</button>
+                            <!-- <button class="btn btn-primary me-md-2" type="button">Login</button> -->
+                            <!-- <button class="btn btn-primary me-md-2" type="button">Sign up</button> -->
+                            <form action="login.php">
+                                <input type="submit" value="Login" disabled />
+                            </form>
+                            <form action="registrationScreen.php">
+                                <input type="submit" value="Sign Up" />
+                            </form>
                         </div>
                     </li>
                 </ul>
@@ -151,19 +157,19 @@ require_once("constants.php");
     <div class='container marketing'>
         <div class='row'>
             <div class='col-lg-4'>
-                <img class='rounded-circle' src='fakeBedRoomPicture.png' width='140px' height='140px'></img>
+                <img class='rounded-circle' src='../imgs/fakeBedRoomPicture.png' width='140px' height='140px'></img>
                 <h2>A Room in Roanoke</h2>
                 <p>The is the first sample room that is going to be displayed. This could be a short discription a user provides about their room or something. And then the view details button could take the user the the registration page for this specific room.</p>
                 <p><a class='btn btn-secondary' href='#'>View details &raquo;</a></p>
             </div>
             <div class='col-lg-4'>
-                <img class='rounded-circle' src='fakeBedRoomPicture_2.png' width='140px' height='140px'></img>
+                <img class='rounded-circle' src='../imgs/fakeBedRoomPicture_2.png' width='140px' height='140px'></img>
                 <h2>A Room in Radford</h2>
                 <p>The is the first sample room that is going to be displayed. This could be a short discription a user provides about their room or something. And then the view details button could take the user the the registration page for this specific room.</p>
                 <p><a class='btn btn-secondary' href='#'>View details &raquo;</a></p>
             </div>
             <div class='col-lg-4'>
-                <img class='rounded-circle' src='fakeBedRoomPicture_3.png' width='140px' height='140px'></img>
+                <img class='rounded-circle' src='../imgs/fakeBedRoomPicture_3.png' width='140px' height='140px'></img>
                 <h2>A Room in Blacksburg</h2>
                 <p>The is the first sample room that is going to be displayed. This could be a short discription a user provides about their room or something. And then the view details button could take the user the the registration page for this specific room.</p>
                 <p><a class='btn btn-secondary' href='#'>View details &raquo;</a></p>
