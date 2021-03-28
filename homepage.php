@@ -45,13 +45,24 @@ require_once("constants.php");
                     <li style="text-allign: right;">
                         <div class="d-grid gap-2 d-md-flex justify-content-md-end">
                             <button class="btn btn-primary me-md-2" type="button">Login</button>
+<<<<<<< Updated upstream
                             <button class="btn btn-primary me-md-2" type="button">Sign up</button>
                             <!-- <form action="login.php">
+=======
+                            <button class="btn btn-primary me-md-2" type="button">Sign up</button> 
+                            <!-- 
+                            <form action="login.php">
+>>>>>>> Stashed changes
                                 <input type="submit" value="Login" disabled />
                             </form>
                             <form action="registrationScreen.php">
                                 <input type="submit" value="Sign Up" />
+<<<<<<< Updated upstream
                             </form> -->
+=======
+                            </form>
+                            -->
+>>>>>>> Stashed changes
                         </div>
                     </li>
                 </ul>
@@ -221,29 +232,3 @@ require_once("constants.php");
     </footer>
 </body>
 </html>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
