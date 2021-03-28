@@ -1,6 +1,6 @@
 <?php
-require_once("utils.php");
-require_once("constants.php");
+require_once("../utilities/utils.php");
+require_once("../utilities/constants.php");
 ?>
 
 <!doctype html>
