@@ -1,6 +1,6 @@
 <?php
-require_once("utils.php");
-require_once("constants.php");
+require_once("utils/utils.php");
+require_once("utils/constants.php");
 ?>
 
 <!doctype html>
@@ -13,7 +13,7 @@ require_once("constants.php");
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-    <link rel='stylesheet' href='style.css'>
+    <link rel='stylesheet' href='styles/style.css'>
 </head>
 
 <body>
@@ -157,19 +157,19 @@ require_once("constants.php");
     <div class='container marketing'>
         <div class='row'>
             <div class='col-lg-4'>
-                <img class='rounded-circle' src='fakeBedRoomPicture.png' width='140px' height='140px'></img>
+                <img class='rounded-circle' src='photos/fakeBedRoomPicture.png' width='140px' height='140px'></img>
                 <h2>A Room in Roanoke</h2>
                 <p>The is the first sample room that is going to be displayed. This could be a short discription a user provides about their room or something. And then the view details button could take the user the the registration page for this specific room.</p>
                 <p><a class='btn btn-secondary' href='#'>View details &raquo;</a></p>
             </div>
             <div class='col-lg-4'>
-                <img class='rounded-circle' src='fakeBedRoomPicture_2.png' width='140px' height='140px'></img>
+                <img class='rounded-circle' src='photos/fakeBedRoomPicture_2.png' width='140px' height='140px'></img>
                 <h2>A Room in Radford</h2>
                 <p>The is the first sample room that is going to be displayed. This could be a short discription a user provides about their room or something. And then the view details button could take the user the the registration page for this specific room.</p>
                 <p><a class='btn btn-secondary' href='#'>View details &raquo;</a></p>
             </div>
             <div class='col-lg-4'>
-                <img class='rounded-circle' src='fakeBedRoomPicture_3.png' width='140px' height='140px'></img>
+                <img class='rounded-circle' src='photos/fakeBedRoomPicture_3.png' width='140px' height='140px'></img>
                 <h2>A Room in Blacksburg</h2>
                 <p>The is the first sample room that is going to be displayed. This could be a short discription a user provides about their room or something. And then the view details button could take the user the the registration page for this specific room.</p>
                 <p><a class='btn btn-secondary' href='#'>View details &raquo;</a></p>

@@ -1,18 +1,16 @@
 <?php
-
-    require_once("utils.php");
-    require_once("constants.php");
-
+    require_once("utils/utils.php");
+    require_once("utils/constants.php");
 ?>
 
 <!doctype html>
 <html>
    <head>
      <title>Post a Room Form</title> 
-	 <link rel="stylesheet" href="styles.css">        
+	 <link rel="stylesheet" href="styles/styles.css">        
    </head>
    <body>
-	<form action="postRoom-handle.php" id='postRoomInfo' method="post">
+	<form action="postRoomHandle.php" id='postRoomInfo' method="post">
 		<h1 id="title">Post a Room</h2>
 
         <label for="title">Title *</label>
