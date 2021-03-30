@@ -21,40 +21,40 @@ require_once("utils/constants.php");
 
 <!-- The navbar for the page -->
 <header>
-     <nav class='navbar navbar-expand-md navbar-dark fixed-top bg-dark'>
-         <div class='container-fluid'>
-             <a class='navbar-brand' href='#'>Team Alpha Website</a>
-             <button class='navbar-toggler' type='button' data-bs-toggle='collapse' data-bs- target='#navbarCollapse' aria-controls='navbarCollapse' aria-expanded='false' aria-         label='Toggle navigation'>
-                 <span class='navbar-toggler-icon'></span>
-             </button>
-             <div class='collapse navbar-collapse' id='navbarCollapse'>
-                 <ul class='nav navbar-nav navbar-left'>
-                     <li class='nav-item active'>
-                         <a class='nav-link' href='#'>Home</a>
-                     </li>
-                     <li class='nav-item'>
-                         <a class='nav-link' href='#'>Repair Tickets</a>
-                     </li>
-                     <li class='nav-item'>
-                         <a class='nav-link' href='#'>Post a Room</a>
-                     </li>
-                     <li>
-                         <form class='d-flex' action="#" method="get">
-                             <input class='form-control me-2' type='search'                  placeholder='Search'/>
-                             <button class='btn btn-primary' type='submit'>Search</button>
-                         </form>
-                     </li>
-                     <li style="text-allign: right;">
-                         <div class="d-grid gap-2 d-md-flex justify-content-md-end">
-                             <button class="btn btn-primary me-md-2" type="button">Login</   button>
-                             <button class="btn btn-primary me-md-2" type="button">Sign up</ button>
-                         </div>
-                     </li>
-                 </ul>
-             </div>
-         </div>
-     </nav>
- </header>
+    <nav class='navbar navbar-expand-md navbar-dark fixed-top bg-dark'>
+        <div class='container-fluid'>
+            <a class='navbar-brand' href='#'>Team Alpha Website</a>
+            <button class='navbar-toggler' type='button' data-bs-toggle='collapse' data-bs- target='#navbarCollapse' aria-controls='navbarCollapse' aria-expanded='false' aria-         label='Toggle navigation'>
+                <span class='navbar-toggler-icon'></span>
+            </button>
+            <div class='collapse navbar-collapse' id='navbarCollapse'>
+                <ul class='nav navbar-nav navbar-left'>
+                    <li class='nav-item active'>
+                        <a class='nav-link' href='#'>Home</a>
+                    </li>
+                    <li class='nav-item'>
+                        <a class='nav-link' href='#'>Repair Tickets</a>
+                    </li>
+                    <li class='nav-item'>
+                        <a class='nav-link' href='#'>Post a Room</a>
+                    </li>
+                    <li>
+                        <form class='d-flex' action="#" method="get">
+                            <input class='form-control me-2' type='search'                  placeholder='Search'/>
+                            <button class='btn btn-primary' type='submit'>Search</button>
+                        </form>
+                    </li>
+                    <li style="text-allign: right;">
+                        <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+                            <button class="btn btn-primary me-md-2" type="button">Login</   button>
+                            <button class="btn btn-primary me-md-2" type="button">Sign up</ button>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+</header>
 
 <div class="jumbotron jumbotron-fluid">
     <div class="container">
@@ -69,15 +69,15 @@ require_once("utils/constants.php");
     <div class="form-row">
         <div class="form-group col-sm">
             <label for="username">Username</label>
-            <input type="text" class="form-control" id="username" name="username" placeholder="Joe.Shmo">
+            <input type="text" class="form-control" id="username" name="username" placeholder="Cannot contain spaces but can contain '-' or '.'" required>
         </div>
         <div class="form-group col-sm">
             <label for="password">Password</label>
-            <input type="password" class="form-control" id="password" name="password">
+            <input type="password" class="form-control" id="password" name="password" placeholder="Must contain at lease one number and one special character." required>
         </div>
         <div class="form-group col-sm">
             <label for="passwordConfirmation">Confirm Password</label>
-            <input type="password" class="form-control" id="passwordConfirmation" name="passwordConfirmation">
+            <input type="password" class="form-control" id="passwordConfirmation" name="passwordConfirmation" required>
         </div>
     </div>
 
@@ -85,11 +85,11 @@ require_once("utils/constants.php");
     <div class="form-row">
         <div class="form-group col-sm">
             <label for="firstName">First name</label>
-            <input type="text" class="form-control" id="firstName" name="firtName" placeholder="Joe">
+            <input type="text" class="form-control" id="firstName" name="firtName" placeholder="Joe" required>
         </div>
         <div class="form-group col-sm">
             <label for="lastName">Last name</label>
-            <input type="text" class="form-control" id="lastName" name="lastName" placeholder="Shmo">
+            <input type="text" class="form-control" id="lastName" name="lastName" placeholder="Shmo" required>
         </div>
     </div>
 
@@ -97,20 +97,24 @@ require_once("utils/constants.php");
     <div class="form-row">
         <div class="form-group col">
             <label for="email">Email</label>
-            <input type="email" class="form-control" id="email" name="email" placeholder="joe.shmo@example.com">
+            <input type="email" class="form-control" id="email" name="email" placeholder="joe.shmo@example.com" required>
         </div>
     </div>
 
     <!-- Fourth row in the form. -->
-    <div class="form-group">
-        <div class="form-check">
-            <input class="form-check-input" type="checkbox" id="validCheck" name="validCheck" value="acceptedFate" required>
-            <label class="form-check-label" for="validCheck">
-                Agree to the <a href="#">terms and conditions</a>
-            </label>
+    <div class="form-row">
+        <div class="form-group col-sm">
+            <div class="form-check">
+                <input class="form-check-input" type="checkbox" id="validCheck" name="validCheck" value="acceptedFate" required>
+                <label class="form-check-label" for="validCheck">
+                    Agree to the <a href="#">terms</a> and <a href="#">conditions</a>
+                </label>
+            </div>
+        </div>
+        <div class="form-group col-sm">
+            <input class="btn btn-primary" type="submit"></button>
         </div>
     </div>
-    <input class="btn btn-primary" type="submit"></button>
 </form>
 
 <!-- The footer of the page. -->
