@@ -46,49 +46,12 @@ require_once("utils/constants.php");
                         <div class="d-grid gap-2 d-md-flex justify-content-md-end">
                             <button class="btn btn-primary me-md-2" type="button">Login</button>
                             <button class="btn btn-primary me-md-2" type="button">Sign up</button>
-                            <!-- <form action="login.php">
-                                <input type="submit" value="Login" disabled />
-                            </form>
-                            <form action="registrationScreen.php">
-                                <input type="submit" value="Sign Up" />
-                            </form> -->
                         </div>
                     </li>
                 </ul>
-<!--
-                <form class='d-flex'>
-                    <input class='form-control me-2' type='search' placeholder='Search'/>
-                    <button class='btn btn-primary' type='submit'>Search</button>
-                </form>
--->
             </div>
         </div>
     </nav>
-<!--
-    <nav class='navbar navbar-dark sticky-top">
-        <div class="container-fluid">
-            <div class="row">
-                <div class="col col-md-auto">
-                    <a class='navbar-brand' href='#'>Team Alpha Website</a>
-                    <a class='nav-link' href='#'>Home</a>
-                    <a class='nav-link' href='#'>Repair Tickets</a>
-                    <a class='nav-link' href='#'>Post a Room</a>
-                </div>
-                <div class="col">
-                    <form class='d-flex'>
-                        <input class='form-control me-2' type='search' placeholder='Search' aria-label='Search'>
-                        <button class='btn btn-primary' type='submit'>Search</button>
-                    </form>
-                </div>
-                <div class="col col-lg-2 right-justified">
-                    <button class="btn btn-primary me-md-2" type="button">Login</button>
-                    <button class="btn btn-primary me-md-2" type="button">Sign up</button>
-                </div>
-            </div>
-        </div>
-    </nav>
--->
-
 </header>
 
     <!-- The carousel containing the pictures -->
