@@ -4,7 +4,25 @@ body {
    color: #5a5a5a;
 }
 
+#registrationForm {
+    padding-top: 6rem;
+}
+
 footer {
     position: absolute;
     bottom: 0;
+}
+
+.jumbotron {
+    box-shadow:
+    0 2.5px 2.2px rgba(0, 0, 0, 0.037),
+    0 6px 5.3px rgba(0, 0, 0, 0.053),
+    0 11.3px 10px rgba(0, 0, 0, 0.065),
+    0 20.1px 17.9px rgba(0, 0, 0, 0.077),
+    0 37.6px 33.4px rgba(0, 0, 0, 0.093),
+    0 90px 80px rgba(0, 0, 0, 0.13);
+}
+
+#formJumbo {
+    text-align: center;
 }

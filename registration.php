@@ -56,7 +56,14 @@ require_once("utils/constants.php");
      </nav>
  </header>
 
-<form method="post">
+<div class="jumbotron jumbotron-fluid">
+    <div class="container">
+        <h1 id="formJumbo" class="display-4">Team Alpha Website User Registration.</h1>
+        <p id="formJumbo" class="lead">Please enter in all of the information below as accurately as you can.</p>
+    </div>
+</div>
+
+<form method="post" id="registrationForm">
 
     <!-- First row in the form. -->
     <div class="form-row">
@@ -106,6 +113,7 @@ require_once("utils/constants.php");
     <input class="btn btn-primary" type="submit"></button>
 </form>
 
+<!-- The footer of the page. -->
 <footer class="container-fluid">
     <hr class="featurette-divider" id="footerDivider" style="width: 100%;">
     <p class="float-right"><a href="#">Back to top</a></p>
