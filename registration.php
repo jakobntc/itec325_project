@@ -8,6 +8,7 @@ require_once("utils/constants.php");
 <html>
 
 <head>
+    <title>Our website registration</title>
     <meta charset='utf-8'>
     <meta name='viewport' content='width=device-width, initial-scale=1'>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
@@ -19,36 +20,43 @@ require_once("utils/constants.php");
 
 <body>
 
-<!-- The navbar for the page -->
+<!-- Navbar for the page. -->
 <header>
     <nav class='navbar navbar-expand-md navbar-dark fixed-top bg-dark'>
-        <div class='container-fluid'>
-            <a class='navbar-brand' href='#'>Team Alpha Website</a>
-            <button class='navbar-toggler' type='button' data-bs-toggle='collapse' data-bs- target='#navbarCollapse' aria-controls='navbarCollapse' aria-expanded='false' aria-         label='Toggle navigation'>
-                <span class='navbar-toggler-icon'></span>
+        <div class="container-fluid">
+            <a class="navbar-brand" href="#">Team Alpha Website</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
             </button>
-            <div class='collapse navbar-collapse' id='navbarCollapse'>
-                <ul class='nav navbar-nav navbar-left'>
-                    <li class='nav-item active'>
-                        <a class='nav-link' href='#'>Home</a>
+            <div class="collapse navbar-collapse" id="navbarCollapse">
+                <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
+                    <li class="nav-item active">
+                        <a class="nav-link" href="#">Home</a>
                     </li>
-                    <li class='nav-item'>
-                        <a class='nav-link' href='#'>Repair Tickets</a>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Repair Tickets</a>
                     </li>
-                    <li class='nav-item'>
-                        <a class='nav-link' href='#'>Post a Room</a>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Post a Room</a>
                     </li>
-                    <li>
-                        <form class='d-flex' action="#" method="get">
-                            <input class='form-control me-2' type='search'                  placeholder='Search'/>
-                            <button class='btn btn-primary' type='submit'>Search</button>
+                    <li class="nav-item">
+                        <form method="get" action="#">
+                            <input type="text" id="searchText" name="searchText" placeholder="Search...">
+                            </input>
+                            <button class="btn btn-primary" type="submit">Search</button>
                         </form>
                     </li>
-                    <li style="text-allign: right;">
-                        <div class="d-grid gap-2 d-md-flex justify-content-md-end">
-                            <button class="btn btn-primary me-md-2" type="button">Login</   button>
-                            <button class="btn btn-primary me-md-2" type="button">Sign up</ button>
-                        </div>
+                </ul>
+                <ul class="nav navbar-nav navbar-right">
+                    <li class=nav-item">
+                        <form method="get" action="#">
+                            <button class="btn btn-primary" type="submit">Login</button>
+                        </form>
+                    </li>
+                    <li class=nav-item">
+                        <form method="get" action="registration.php">
+                            <button class="btn btn-primary" type="submit">Sign Up</button>
+                        </form>
                     </li>
                 </ul>
             </div>
@@ -56,6 +64,7 @@ require_once("utils/constants.php");
     </nav>
 </header>
 
+<!-- Jumbotron containing the title for the page. -->
 <div class="jumbotron jumbotron-fluid">
     <div class="container">
         <h1 id="formJumbo" class="display-4">Team Alpha Website User Registration.</h1>
