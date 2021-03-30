@@ -45,7 +45,9 @@ require_once("utils/constants.php");
                     <li style="text-allign: right;">
                         <div class="d-grid gap-2 d-md-flex justify-content-md-end">
                             <button class="btn btn-primary me-md-2" type="button">Login</button>
-                            <button class="btn btn-primary me-md-2" type="button">Sign up</button>
+                            <form method="get" action="registration.php">
+                                <button class="btn btn-primary me-md-2" type="submit">Sign up</button>
+                            </form>
                         </div>
                     </li>
                 </ul>
