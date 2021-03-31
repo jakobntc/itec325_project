@@ -30,8 +30,8 @@ require_once("utils/constants.php");
             </button>
             <div class="collapse navbar-collapse" id="navbarCollapse">
                 <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
-                    <li class="nav-item active">
-                        <a class="nav-link" href="#">Home</a>
+                    <li class="nav-item">
+                        <a class="nav-link" href="homepage.php">Home</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="#">Repair Tickets</a>
@@ -78,15 +78,15 @@ require_once("utils/constants.php");
     <div class="form-row">
         <div class="form-group col-sm">
             <label for="username">Username</label>
-            <input type="text" class="form-control" id="username" name="username" placeholder="Cannot contain spaces but can contain '-' or '.'" required>
+            <input type="text" class="form-control" id="username" name="username" placeholder="Cannot contain spaces or symbols." required minlength="10" maxlength="25" pattern="[a-zA-Z0-9]+">
         </div>
         <div class="form-group col-sm">
             <label for="password">Password</label>
-            <input type="password" class="form-control" id="password" name="password" placeholder="Must contain at lease one number and one special character." required>
+            <input type="password" class="form-control" id="password" name="password" placeholder="Must contain at lease one number and one symbol." required minlength="10" maxlength="25" pattern="(?=.*[0-9])(?=.*[a-zA-Z])([a-zA-Z0-9]+)">
         </div>
         <div class="form-group col-sm">
             <label for="passwordConfirmation">Confirm Password</label>
-            <input type="password" class="form-control" id="passwordConfirmation" name="passwordConfirmation" required>
+            <input type="password" class="form-control" id="passwordConfirmation" name="passwordConfirmation" required minlength="10" maxlength="25" pattern="(?=.*[0-9])(?=.*[a-zA-Z])([a-zA-Z0-9]+)">
         </div>
     </div>
 
@@ -94,11 +94,11 @@ require_once("utils/constants.php");
     <div class="form-row">
         <div class="form-group col-sm">
             <label for="firstName">First name</label>
-            <input type="text" class="form-control" id="firstName" name="firtName" placeholder="Joe" required>
+            <input type="text" class="form-control" id="firstName" name="firtName" placeholder="Joe" required pattern="[a-zA-Z]+">
         </div>
         <div class="form-group col-sm">
             <label for="lastName">Last name</label>
-            <input type="text" class="form-control" id="lastName" name="lastName" placeholder="Shmo" required>
+            <input type="text" class="form-control" id="lastName" name="lastName" placeholder="Shmo" required pattern="[a-zA-Z]+">
         </div>
     </div>
 
