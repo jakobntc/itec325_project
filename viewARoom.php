@@ -58,53 +58,75 @@
     </nav>
 </header>
 
-<div id="bodyContainer" class="container">
+<div id="bodyContainer" class="container-fluid">
+
+    <!-- Row 1 -->
     <div class="row">
-        <div class="col-sm-6 col-auto">
-            <h1>Title of the room</h1>
+        <div class="col-sm">
+            <h1 style="text-align: center;">Title of the room</h1>
         </div>
     </div>
-
-    <div class="row align-items-start">
-
-        <!-- carousel -->
-        <div id="roomPhotos" class="carousel slide col-sm-6" data-bs-ride="carousel">
-
-            <!-- Items in the carousel. -->
-            <div class="carousel-inner">
-                <div class="carousel-item active">
-                    <img src="photos/fakeBedRoomPicture.png" class="d-block w-100">
+    
+    <!-- Row 2 -->
+    <div class="row justify-content-start">
+        
+        <!-- Location Column -->
+        <div class="col-sm-3 align-self-start">
+            <div class="card text-center">
+                <h5 class="card-header">Location</h5>
+                <div class="card-body">
+                    <h5 class="card-title">Roanoke</h5>
+                    <p class="card-text">This is just an exampe of somewhere that the location might be.</p>
+                    <form method="get" action="#">
+                        <button class="btn btn-primary" type="submit">Reserve Now</button>
+                    </form>
                 </div>
-                <div class="carousel-item">
-                    <img src="photos/fakeBedRoomPicture_2.png" class="d-block w-100">
-                </div>
-                <div class="carousel-item">
-                    <img src="photos/fakeBedRoomPicture_3.png" class="d-block w-100">
-                </div>
-            </div>
-
-            <!-- Buttons for the controls. -->
-            <a class="carousel-control-prev" role="button" href="#roomPhotos" data-slide="prev">
-                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                <span class="visually-hidden">Previous</span>
-            </a>
-            <a class="carousel-control-next" role="button" href="#roomPhotos" data-slide="next">
-                <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                <span class="visually-hidden">Next</span>
-            </a>
-        </div> 
-        <!-- /carousel -->
-
-        <!-- User profile card -->
-        <div class="col-sm-4 ml-auto card" style="width: 18rem;">
-            <img class="card-img-top" src="#" alt="Photo of Rentor">
-            <div class="card-body">
-                <h5 class="card-title">Account name</h5>
-                <p class="card-text">This is going to be the person discription on their account or something.</p>
-                <a href="#" class="btn btn-primary">View Profile</a>
             </div>
         </div>
-        <!-- /User profile card -->
+        <!-- /Location Column -->
+
+        <!-- Carousel Column-->
+        <div class="col-md-6">
+            <div id="roomPhotos" class="carousel slide" data-bs-ride="carousel">
+
+                <!-- Items in the carousel. -->
+                <div class="carousel-inner">
+                    <div class="carousel-item active">
+                        <img src="photos/fakeBedRoomPicture.png" class="d-block w-100">
+                    </div>
+                    <div class="carousel-item">
+                        <img src="photos/fakeBedRoomPicture_2.png" class="d-block w-100">
+                    </div>
+                    <div class="carousel-item">
+                        <img src="photos/fakeBedRoomPicture_3.png" class="d-block w-100">
+                    </div>
+                </div>
+
+                <!-- Buttons for the controls. -->
+                <a class="carousel-control-prev" role="button" href="#roomPhotos" data-slide="prev">
+                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                    <span class="visually-hidden">Previous</span>
+                </a>
+                <a class="carousel-control-next" role="button" href="#roomPhotos" data-slide="next">
+                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                    <span class="visually-hidden">Next</span>
+                </a>
+            </div> 
+        </div>
+        <!-- /Carousel Column -->
+
+        <!-- User profile card column-->
+        <div class="col-sm align-self-start">
+            <div class="card" style="width: 18rem;">
+                <img class="card-img-top" src="#" alt="Photo of Rentor">
+                <div class="card-body">
+                    <h5 class="card-title">Account name</h5>
+                    <p class="card-text">This is going to be the person discription on their account or something.</p>
+                    <a href="#" class="btn btn-primary">View Profile</a>
+                </div>
+            </div>
+        </div>
+        <!-- /User profile card column-->
 
     </div>
 </div>
