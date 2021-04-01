@@ -72,16 +72,38 @@
         
         <!-- Location Column -->
         <div class="col-sm-3 align-self-start">
-            <div class="card text-center">
-                <h5 class="card-header">Location</h5>
-                <div class="card-body">
-                    <h5 class="card-title">Roanoke</h5>
-                    <p class="card-text">This is just an exampe of somewhere that the location might be.</p>
-                    <form method="get" action="#">
-                        <button class="btn btn-primary" type="submit">Reserve Now</button>
-                    </form>
+            <!-- Inside row 1 -->
+            <div class="row p-2">
+                <div class="col-sm align-self-start">
+                    <div class="card text-center">
+                        <h5 class="card-header">Location</h5>
+                        <div class="card-body">
+                            <h5 class="card-title">Roanoke</h5>
+                            <p class="card-text">This is just an exampe of somewhere that the location might be.</p>
+                            <form method="get" action="#">
+                                <button class="btn btn-primary" type="submit">Reserve Now</button>
+                            </form>
+                        </div>
+                    </div>
                 </div>
             </div>
+            <!-- /Inside row 1 -->
+
+            <!-- Inside row 2 -->
+            <div class="row p-2">
+                <div class="col-sm">
+                    <div class="card text-center bg-primary text-white">
+                        <h5 class="card-header">Pricing</h5>
+                        <div class="card-body">
+                            <h5 class="card-title">$100 per night</h5>
+                            <p class="card-text">This room will only be available for a max stay of 3 consegutave? nights.</p>
+                            <p class="card-text text-warning font-weight-light font-italic" style="font-size: 0.8rem">There will be a $50 upcharge if pets are staying also.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- /Inside row 2 -->
+
         </div>
         <!-- /Location Column -->
 
@@ -133,12 +155,12 @@
     <!-- Row 3 -->
     <div class="row justify-content-center">
 
-        <!-- description Colum -->
+        <!-- description Column -->
         <div class="col-sm-6">
-            <h3 style="text-align: center;">description</h3>
+            <h3 style="text-align: center;">Description</h3>
             <p class="border" style="text-align: center;">The description of the room will go here.</p>
         </div>
-        <!-- /description Colum -->
+        <!-- /description Column -->
 
     </div>
     <!-- /Row 3 -->
