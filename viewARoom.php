@@ -121,7 +121,7 @@
                 <img class="card-img-top" src="#" alt="Photo of Rentor">
                 <div class="card-body">
                     <h5 class="card-title">Account name</h5>
-                    <p class="card-text">This is going to be the person discription on their account or something.</p>
+                    <p class="card-text">This is going to be the person description on their account or something.</p>
                     <a href="#" class="btn btn-primary">View Profile</a>
                 </div>
             </div>
@@ -133,12 +133,12 @@
     <!-- Row 3 -->
     <div class="row justify-content-center">
 
-        <!-- Discription Colum -->
+        <!-- description Colum -->
         <div class="col-sm-6">
-            <h3 style="text-align: center;">Discription</h3>
-            <p class="border" style="text-align: center;">The discription of the room will go here.</p>
+            <h3 style="text-align: center;">description</h3>
+            <p class="border" style="text-align: center;">The description of the room will go here.</p>
         </div>
-        <!-- /Discription Colum -->
+        <!-- /description Colum -->
 
     </div>
     <!-- /Row 3 -->
