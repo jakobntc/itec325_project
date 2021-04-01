@@ -128,8 +128,22 @@
         </div>
         <!-- /User profile card column-->
 
+    </div> <!-- /Row 2 -->
+
+    <!-- Row 3 -->
+    <div class="row justify-content-center">
+
+        <!-- Discription Colum -->
+        <div class="col-sm-6">
+            <h3 style="text-align: center;">Discription</h3>
+            <p class="border" style="text-align: center;">The discription of the room will go here.</p>
+        </div>
+        <!-- /Discription Colum -->
+
     </div>
-</div>
+    <!-- /Row 3 -->
+
+</div> <!-- /Container -->
 
 <!-- Footer for the page. -->
 <footer class="container">
