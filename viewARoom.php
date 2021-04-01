@@ -95,7 +95,7 @@
                     <div class="card text-center bg-primary text-white">
                         <h5 class="card-header">Pricing</h5>
                         <div class="card-body">
-                            <h5 class="card-title">$100 per night</h5>
+                            <h2 class="card-title font-weight-bold">$100 per night</h2>
                             <p class="card-text">This room will only be available for a max stay of 3 consegutave? nights.</p>
                             <p class="card-text text-warning font-weight-light font-italic" style="font-size: 0.8rem">There will be a $50 upcharge if pets are staying also.</p>
                         </div>
