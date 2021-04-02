@@ -61,9 +61,9 @@
 <div id="bodyContainer" class="container-fluid">
 
     <!-- Row 1 -->
-    <div class="row">
+    <div class="row m-2">
         <div class="col-sm">
-            <h1 style="text-align: center;">Title of the room</h1>
+            <h1 class="display-1 text-center" style="">Title of the room</h1>
         </div>
     </div>
     
@@ -76,9 +76,9 @@
             <div class="row p-2">
                 <div class="col-sm align-self-start">
                     <div class="card text-center">
-                        <h5 class="card-header">Location</h5>
+                        <h1 class="card-header">Location</h1>
                         <div class="card-body">
-                            <h5 class="card-title">Roanoke</h5>
+                            <h3 class="card-title">Roanoke</h3>
                             <p class="card-text">This is just an exampe of somewhere that the location might be.</p>
                             <form method="get" action="#">
                                 <button class="btn btn-primary" type="submit">Reserve Now</button>
@@ -93,9 +93,9 @@
             <div class="row p-2">
                 <div class="col-sm">
                     <div class="card text-center bg-primary text-white">
-                        <h5 class="card-header">Pricing</h5>
+                        <h1 class="card-header">Pricing</h1>
                         <div class="card-body">
-                            <h2 class="card-title font-weight-bold">$100 per night</h2>
+                            <h3 class="card-title font-weight-bold">$100 per night</h3>
                             <p class="card-text">This room will only be available for a max stay of 3 consegutave? nights.</p>
                             <p class="card-text text-warning font-weight-light font-italic" style="font-size: 0.8rem">There will be a $50 upcharge if pets are staying also.</p>
                         </div>
@@ -142,7 +142,7 @@
             <div class="card" style="width: 18rem;">
                 <img class="card-img-top" src="#" alt="Photo of Rentor">
                 <div class="card-body">
-                    <h5 class="card-title">Account name</h5>
+                    <h3 class="card-title">Account name</h3>
                     <p class="card-text">This is going to be the person description on their account or something.</p>
                     <a href="#" class="btn btn-primary">View Profile</a>
                 </div>
@@ -164,6 +164,39 @@
 
     </div>
     <!-- /Row 3 -->
+    
+    <!-- Row 4 -->
+    <div class="row">
+        <div class="col-sm">
+            <div class="card text-center">
+                <div class="card-header">
+                    <h1>Amenities</h1>
+                </div>
+                <ul class="list-group">
+                    <li class="list-group-item"><p>Washer and Dryer</p></li>
+                    <li class="list-group-item"><p>Pets Allowed</p></li>
+                    <li class="list-group-item"><p>Dishwasher</p></li>
+                    <li class="list-group-item"><p>Balcony</p></li>
+                    <li class="list-group-item"><p>Garage</p></li>
+                    <li class="list-group-item"><p>Swimming Pool</p></li>
+                </ul>
+            </div>
+        </div>
+        <div class="col-sm">
+            <div class="card text-center">
+                <div class="card-header">
+                    <h1>Rooms specs</h1>
+                </div>
+                <ul class="list-group">
+                    <li class="list-group-item"><p>Square Foot: some number</p></li>
+                    <li class="list-group-item"><p>Number of Bedrooms: some number</p></li>
+                    <li class="list-group-item"><p>Number of Bathrooms: some number</p></li>
+                    <li class="list-group-item"><p>Someing allowed?: Yes / No</p></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <!-- /Row 4 -->
 
 </div> <!-- /Container -->
 
