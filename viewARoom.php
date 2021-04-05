@@ -138,7 +138,7 @@
         <!-- /Carousel Column -->
 
         <!-- User profile card column-->
-        <div class="col-sm align-self-start">
+        <div class="col-sm align-self-center">
             <div class="card" style="width: 18rem;">
                 <img class="card-img-top" src="#" alt="Photo of Rentor">
                 <div class="card-body">
@@ -197,14 +197,15 @@
         </div>
     </div>
     <!-- /Row 4 -->
-
+    
+    <div class="row">
+        <div class="col">
+            <hr class="featurette-divider" id="footerDivider" style="width: 100%;">
+            <p class="float-right"><a href="#">Back to top</a></p>
+            <p>&copy; 2017-2019, inc. &middot; <a href="#">Privacy</a> &middot; <a href="#">Terms</a></p>
+        </div>
+    </div>
 </div> <!-- /Container -->
-
-<!-- Footer for the page. -->
-<footer class="container">
-    <p class="float-right"><a href="#">Back to top</a></p>
-    <p>&copy; 2017-2019, inc. &middot; <a href="#">Privacy</a> &middot; <a href="#">Terms</a></p>
-</footer>
 
 </body>
 
