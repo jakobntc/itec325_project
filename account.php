@@ -30,30 +30,25 @@
         <!-- Sidebar  -->
         <nav id="sidebar">
             <div class="sidebar-header">
-                <h3>Account</h3>
+                <h3 style="margin: 0 auto;">Name</h3>
                 <img id="profileIMG" src="photos/profile.jpg" alt="Profile Picture">
             </div>
 
             <ul class="list-unstyled components">
                 <li>
-                    <a href="#">Account</a>
+                    <a href="#" style="pointer-events: none">Account</a>
                 </li>
                 <li>
-                    <a href="#">Current Reservations</a>
+                    <a href="currentReservations.php">Current Reservations</a>
                 </li>
                 <li>
-                    <a href="#">Past Reservations</a>
+                    <a href="pastReservations.php">Past Reservations</a>
                 </li>
             </ul>
         </nav>
 
         <!-- Page Content  -->
         <div id="content">
-
-            <button type="button" id="sidebarCollapse" class="btn btn-info">
-                <i class="fas fa-align-left"></i>
-                <span>Toggle Sidebar</span>
-            </button>
 
             <h1>Account Settings</h1>
 
