@@ -49,7 +49,7 @@ require_once("utils/constants.php");
                 </ul>
                 <ul class="nav navbar-nav navbar-right">
                     <li class=nav-item">
-                        <form method="get" action="#">
+                        <form method="get" action="login.php">
                             <button class="btn btn-primary" type="submit">Login</button>
                         </form>
                     </li>
