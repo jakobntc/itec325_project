@@ -96,6 +96,8 @@ require_once("utils/constants.php");
                         <label for="password">Password</label>
                         <input type="password" class="form-control" id="password" name="password" placeholder="Must contain at lease one number and one symbol." required minlength="10" maxlength="25" pattern="(?=.*[0-9])(?=.*[a-zA-Z])([a-zA-Z0-9]+)">
                     </div>
+                </div>
+                <div class="form-group row justify-content-center">
                     <div class="col-sm-3">
                         <label for="passwordConfirmation">Confirm Password</label>
                         <input type="password" class="form-control" id="passwordConfirmation" name="passwordConfirmation" required minlength="10" maxlength="25" pattern="(?=.*[0-9])(?=.*[a-zA-Z])([a-zA-Z0-9]+)">
