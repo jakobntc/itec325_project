@@ -54,7 +54,6 @@ require_once("utils/constants.php");
                         <form method="get" action="registration.php">
                             <button class="btn btn-primary" type="submit">Sign Up</button>
                         </form>
-                    </li>
                 </ul>
             </div>
         </div>
@@ -191,29 +190,3 @@ require_once("utils/constants.php");
     </footer>
 </body>
 </html>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
