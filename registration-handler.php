@@ -1,6 +1,7 @@
 <?php
 
 require_once("database-connection.php");
+require_once("registration-validate.php");
 
 $con = connectToDatabase();
 
@@ -11,25 +12,17 @@ if (!$con) {
 }
 
 echo "Initializing the variables.\n";
-$username = $_POST["username"];
+$username = mysqli_real_escape_string($con, $_POST["username"]);
 $password = hash("sha256", $_POST["password"]);
 $confirmPassword = $_POST["passwordConfirmation"];
 $firstName = $_POST["firstName"];
 $lastName = $_POST["lastName"];
 $email = $_POST["email"];
 
-// Checking if the username occures in the database.
-//
-$checkUsername = "SELECT * FROM Users
-                  WHERE User_Name = '$username'";
-$allRows = mysqli_query($con, $checkUsername);
-if (!$allRows) echo "Query failed : Lost connection?";
+$usernameConflict = checkUsername($username);
+$emailConflict = checkEmail($email);
 
-$topRow = mysqli_fetch_array($allRows);
-
-// If the username DOESN'T occure in the database.
-//
-if (!$topRow) {
+if (!$usernameConflict && !$emailConflict) {
     $insert = "INSERT INTO Users( User_Name
                                 , Password
                                 , F_Name
@@ -49,11 +42,9 @@ if (!$topRow) {
     } else {
         echo "Insert Succedded.\n";
     }
-    }
-// If the username DOES occure in the database
-//
-else {
-    echo "Username already exists.\n";
+} else {
+    if ($usernameConflict) header("Location: registration.php?error=username");
+    if ($emailConflict) header("Location: registration.php?error=email");
 }
 
 /*
