@@ -17,10 +17,10 @@ $dropAndCreateTables = array( "dropReservations" => "DROP TABLE IF EXISTS Reserv
                             , "dropAmenities" => "DROP TABLE IF EXISTS Amenities"
                             , "createUsers" => "CREATE TABLE Users ( User_ID INTEGER AUTO_INCREMENT
                                                                    , User_Name VARCHAR(25) NOT NULL
-                                                                   , Password VARCHAR(25) NOT NULL
+                                                                   , Password VARCHAR(64) NOT NULL
                                                                    , F_Name VARCHAR(30) NOT NULL
                                                                    , L_Name VARCHAR(30) NOT NULL
-                                                                   , Email VARCHAR(30) NOT NULL
+                                                                   , Email VARCHAR(254) NOT NULL
                                                                    , CONSTRAINT Pk_User PRIMARY KEY (User_ID)
                                                                    )"
                             , "createReservations" => "CREATE TABLE Reservations ( Reservation_ID INTEGER AUTO_INCREMENT
