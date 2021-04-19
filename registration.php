@@ -84,7 +84,7 @@ require_once("utils/constants.php");
 
 		<!-- Error reporting row -->
 		<div class="form-group row justify-content-center">
-		    <div class="col-sm-6 align-self-center">
+		    <div class="col-sm align-self-center">
 			<?php
 			
 			if (isset($_GET['error'])) {
@@ -106,7 +106,7 @@ require_once("utils/constants.php");
                 <div class="form-group row justify-content-center">
                     <div class="col-sm-3 align-self-center">
                         <label for="username">Username</label>
-                        <input type="text" class="form-control" id="username" name="username" placeholder="Cannot contain spaces or symbols."   required minlength="10" maxlength="25" pattern="[a-zA-Z0-9]+">
+                        <input type="text" class="form-control" id="username" name="username" placeholder="Cannot contain spaces or symbols."   required minlength="10" maxlength="25" pattern="[a-zA-Z0-9]+" value="<?php echo $_GET['username'] ?>">
                     </div>
                 </div> <!-- /First row in the form. -->
 
@@ -129,7 +129,7 @@ require_once("utils/constants.php");
                 <div class="form-group row justify-content-center">
                     <div class="col-sm-3">
                         <label for="firstName">First name</label>
-                        <input type="text" class="form-control" id="firstName" name="firstName" placeholder="Joe" required pattern="[a-zA-Z]+">
+                        <input type="text" class="form-control" id="firstName" name="firstName" placeholder="Joe" required pattern="[a-zA-Z]+" value="<?php echo $_GET['firstName'] ?>">
                     </div>
                 </div> <!-- /third row in the form. -->
 
@@ -137,7 +137,7 @@ require_once("utils/constants.php");
                 <div class="form-group row justify-content-center">
                     <div class="col-sm-3">
                         <label for="lastName">Last name</label>
-                        <input type="text" class="form-control" id="lastName" name="lastName" placeholder="Shmo" required pattern="[a-zA-Z]+">
+                        <input type="text" class="form-control" id="lastName" name="lastName" placeholder="Shmo" required pattern="[a-zA-Z]+" value="<?php echo $_GET['lastName'] ?>">
                     </div>
                 </div> <!-- /Fourth row in the form. -->
 
@@ -145,7 +145,7 @@ require_once("utils/constants.php");
                 <div class="form-group row justify-content-center">
                     <div class="col-sm-3">
                         <label for="email">Email</label>
-                        <input type="email" class="form-control" id="email" name="email" placeholder="joe.shmo@example.com" required>
+                        <input type="email" class="form-control" id="email" name="email" placeholder="joe.shmo@example.com" required value="<?php echo $_GET['email'] ?>">
                     </div>
                 </div> <!-- /Fifth row in the form. -->
 
