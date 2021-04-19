@@ -108,7 +108,7 @@ require_once("utils/constants.php");
                 <div class="form-group row justify-content-center">
                     <div class="col-sm-3">
                         <label for="firstName">First name</label>
-                        <input type="text" class="form-control" id="firstName" name="firtName" placeholder="Joe" required pattern="[a-zA-Z]+">
+                        <input type="text" class="form-control" id="firstName" name="firstName" placeholder="Joe" required pattern="[a-zA-Z]+">
                     </div>
                 </div> <!-- /third row in the form. -->
 
