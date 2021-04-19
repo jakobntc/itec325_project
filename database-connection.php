@@ -1,7 +1,7 @@
 <?php
 
 function connectToDatabase() {
-    $host = "itec-php01";
+    $host = "localhost";
     $username = "325proj2";
     $password = "325proj2!";
     $dbname = "325proj2";
