@@ -80,7 +80,7 @@ require_once("utils/constants.php");
     <!-- row containing the entire form -->
     <div class="row">
         <div class="col">
-            <form method="post" id="registrationForm">
+            <form method="post" id="registrationForm" action="registration-handler.php">
 
                 <!-- First row in the form. -->
                 <div class="form-group row justify-content-center">
@@ -94,7 +94,8 @@ require_once("utils/constants.php");
                 <div class="form-group row justify-content-center">
                     <div class="col-sm-3">
                         <label for="password">Password</label>
-                        <input type="password" class="form-control" id="password" name="password" placeholder="Must contain at lease one number and one symbol." required minlength="10" maxlength="25" pattern="(?=.*[0-9])(?=.*[a-zA-Z])([a-zA-Z0-9]+)">
+                        <input type="password" class="form-control" id="password" name="password" required minlength="10" maxlength="25" pattern="(?=.*[0-9])(?=.*[a-zA-Z])([a-zA-Z0-9]+)">
+			<small>Must contain at least one number</small>
                     </div>
                 </div>
                 <div class="form-group row justify-content-center">
