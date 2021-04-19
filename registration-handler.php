@@ -6,12 +6,12 @@ require_once("registration-validate.php");
 $con = connectToDatabase();
 
 if (!$con) {
-    echo "Conneciton failed.\n";
+    echo "Conneciton failed.</br>";
 } else {
-    echo "Connection successful\n";
+    echo "Connection successful</br>";
 }
 
-echo "Initializing the variables.\n";
+echo "Initializing the variables.</br>";
 $username = mysqli_real_escape_string($con, $_POST["username"]);
 $password = hash("sha256", $_POST["password"]);
 $confirmPassword = $_POST["passwordConfirmation"];
@@ -38,16 +38,15 @@ if (!$usernameConflict && !$emailConflict) {
 
     $result = mysqli_query($con, $insert);
     if (!$result) {
-        echo "Insert failed.\n";
+        echo "Insert failed.</br>";
     } else {
-        echo "Insert Succedded.\n";
+        echo "Insert Succedded.</br>";
     }
 } else {
-    if ($usernameConflict) header("Location: registration.php?error=username");
-    if ($emailConflict) header("Location: registration.php?error=email");
+    if ($usernameConflict) header("Location: registration.php?error=username&firstName=$firstName&lastName=$lastName&email=$email");
+    if ($emailConflict) header("Location: registration.php?error=email&username=$username&firstName=$firstName&lastName=$lastName");
 }
 
-/*
 // Printing out all of the users in the Users table.
 //
 $query = "SELECT * FROM Users";
@@ -57,22 +56,21 @@ if (!$result) {
     echo "Query failed somehow";
 } else {
     while ($oneRow = mysqli_fetch_assoc($result)) {
-        echo "\nUser_ID: "
+        echo "</br>User_ID: "
             , $oneRow["User_ID"]
-            , "\nUser_Name: "
+            , "</br>User_Name: "
             , $oneRow["User_Name"]
-            , "\nHashed_Password: : "
+            , "</br>Hashed_Password: : "
             , $oneRow["Password"]
-            , "\nFirst_Name: "
+            , "</br>First_Name: "
             , $oneRow["F_Name"]
-            , "\nLast_Name: "
+            , "</br>Last_Name: "
             , $oneRow["L_Name"]
-            , "\nEmail: "
+            , "</br>Email: "
             , $oneRow["Email"]
-            , "\n";
+            , "</br>";
     }
 }
- */
 
 mysqli_close($con);
 echo "Connection closed";
