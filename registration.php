@@ -82,6 +82,26 @@ require_once("utils/constants.php");
         <div class="col">
             <form method="post" id="registrationForm" action="registration-handler.php">
 
+		<!-- Error reporting row -->
+		<div class="form-group row justify-content-center">
+		    <div class="col-sm-6 align-self-center">
+			<?php
+			
+			if (isset($_GET['error'])) {
+			    $error = $_GET['error'];
+			    if ($error === "email"){
+				echo "<p class='display-4 text-center' style='color: red;'>Email is already in the system.</p>";
+			    }
+			    if ($error === "username"){
+				echo "<p class='display-4 text-center' style='color: red;'>Username is already in the system.</p>";
+			    }
+			}
+			
+			?>
+		    </div>
+		</div>
+		<!-- /Error reporting row -->
+
                 <!-- First row in the form. -->
                 <div class="form-group row justify-content-center">
                     <div class="col-sm-3 align-self-center">
