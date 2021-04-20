@@ -22,6 +22,6 @@ if (!$oneRow) {
     echo "Valid username & password provided.\n";
 }
 
-$
+mysqli_close($con);
 
 ?>

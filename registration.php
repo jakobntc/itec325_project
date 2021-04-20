@@ -16,6 +16,52 @@ require_once("utils/constants.php");
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
     <link rel='stylesheet' href='styles/reg_style.css'>
+    <script type="text/javascript">
+	function validatePasswords() {
+	    $pass = document.getElementById("password").value;
+	    $passConf = document.getElementById("passwordConfirmation").value;
+
+	    if ($pass === $passConf) {
+		$msg = false;
+	    } else {
+		$msg = "The password did not match";
+	    }
+	    displayMsg(document.getElementById("password"), $msg, true);
+        }
+
+	/*
+         * @author ibarland@radford.edu
+         * https://php.radford.edu/~itec325/2021spring-flo/Lectures/js/validate-v1-via-js/form0- validated.php
+         */
+         function insertAfter( $newNode, $referenceNode ) {
+             $referenceNode.parentNode.insertBefore( $newNode, $referenceNode.nextSibling );
+         }
+
+        /*
+        * displayMsg : node, string, boolean=false  ->  void
+        *
+        * $node : The node that the message/error is refering to.
+        * $msg  : The message/error that is being displayed to the user.
+        *     If this is false then no message/error will be displayed.
+        * $error : A boolean representing if the message being displayed is a
+        *          error or not.
+        *
+        * Displays a error-message / message to the user. The message is insert
+        * after the node that is being passed in.
+        */
+        function displayMsg( $node, $msg, $error=false) {
+            if ($msg===false) $msg="";
+            $msgNodeName = $node.id + (($error) ? "-err" : "-msg");
+            if (!document.getElementById($msgNodeName)) {
+                var $msgNode = document.createElement("span");
+                $msgNode.setAttribute( "id", $msgNodeName );
+                $msgNode.setAttribute( "class", (($error) ? "err-messgage" : "message") );
+                $msgNode.setAttribute( "style", "color: " + (($error) ? "red;" : "blue;") );
+                insertAfter( $msgNode, $node );
+            }
+            document.getElementById($msgNodeName).innerHTML = $msg;
+        }
+    </script>
 </head>
 
 <body>
@@ -121,7 +167,7 @@ require_once("utils/constants.php");
                 <div class="form-group row justify-content-center">
                     <div class="col-sm-3">
                         <label for="passwordConfirmation">Confirm Password</label>
-                        <input type="password" class="form-control" id="passwordConfirmation" name="passwordConfirmation" required minlength="10" maxlength="25" pattern="(?=.*[0-9])(?=.*[a-zA-Z])([a-zA-Z0-9]+)">
+                        <input type="password" class="form-control" id="passwordConfirmation" name="passwordConfirmation" required minlength="10" maxlength="25" pattern="(?=.*[0-9])(?=.*[a-zA-Z])([a-zA-Z0-9]+)" onchange="validatePasswords();">
                     </div>
                 </div> <!-- /Second row in the form -->
                 

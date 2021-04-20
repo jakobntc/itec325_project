@@ -71,10 +71,10 @@
             <h1 class="h3 mb-3 fw-normal">Please sign in</h1>
 
             <div class="form-floating" style="margin: 3px;">
-                <input type="text" class="form-control" name="username" id="username" placeholder="Username" required minlength="10" maxlength="25">
+                <input type="text" class="form-control" name="username" id="username" placeholder="Username" required>
             </div>
             <div class="form-floating" style="margin: 3px;">
-                <input type="password" class="form-control" name="password" id="password" placeholder="Password" required minlength="10" maxlength="25">
+                <input type="password" class="form-control" name="password" id="password" placeholder="Password" required>
             </div>
             <button class="w-100 btn btn-lg btn-primary" type="submit">Sign in</button>
             <p class="mt-5 mb-3 text-muted"><a href="#">Terms</a> & <a href="#">conditions</a></p>
