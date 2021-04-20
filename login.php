@@ -66,15 +66,15 @@
 
 <main class="form-signin">
     <div class="shadow-lg border rounded rounded-3" style="height: 400px; padding: 10px;">
-        <form style="margin: 5px;">
+        <form style="margin: 5px;" name="loginForm" method="post" action="login-handler.php">
             <img class="mb-4" src="photos/logo.webp" alt="" width="57" height="57">
             <h1 class="h3 mb-3 fw-normal">Please sign in</h1>
 
             <div class="form-floating" style="margin: 3px;">
-                <input type="text" class="form-control" id="floatingInput" placeholder="Username" required minlength="10" maxlength="25">
+                <input type="text" class="form-control" name="username" id="username" placeholder="Username" required minlength="10" maxlength="25">
             </div>
             <div class="form-floating" style="margin: 3px;">
-                <input type="password" class="form-control" id="floatingPassword" placeholder="Password" required minlength="10" maxlength="25">
+                <input type="password" class="form-control" name="password" id="password" placeholder="Password" required minlength="10" maxlength="25">
             </div>
             <button class="w-100 btn btn-lg btn-primary" type="submit">Sign in</button>
             <p class="mt-5 mb-3 text-muted"><a href="#">Terms</a> & <a href="#">conditions</a></p>
