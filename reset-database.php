@@ -15,6 +15,7 @@ $dropAndCreateTables = array( "dropReservations" => "DROP TABLE IF EXISTS Reserv
                             , "dropRooms" => "DROP TABLE IF EXISTS Rooms"
                             , "dropUsers" => "DROP TABLE IF EXISTS Users"
                             , "dropAmenities" => "DROP TABLE IF EXISTS Amenities"
+			    , "dropTickets" => "DROP TABLE IF EXISTS Ticket"
                             , "createUsers" => "CREATE TABLE Users ( User_ID INTEGER AUTO_INCREMENT
                                                                    , User_Name VARCHAR(25) NOT NULL
                                                                    , Password VARCHAR(64) NOT NULL
@@ -56,6 +57,11 @@ $dropAndCreateTables = array( "dropReservations" => "DROP TABLE IF EXISTS Reserv
                                                                                      , CONSTRAINT FK_Room_Amenities_Amen_ID FOREIGN KEY (Room_ID)
                                                                                            REFERENCES Amenities(Amen_ID)
                                                                                      )"
+			    , "createTicket" =>         "CREATE TABLE Ticket ( Ticket_ID INTEGER AUTO_INCREMENT
+									      , Ticket_contact VARCHAR(100)
+									      , Ticket_reason VARCHAR(30)
+									      , Ticket_message VARCHAR(1000)
+									      , CONSTRAINT PK_Ticket (Ticket_ID))"
                             );
 
 // Dropping and creating the tables.
