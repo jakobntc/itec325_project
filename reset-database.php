@@ -88,7 +88,7 @@ $amenities = array( "Air Conditioning"
 foreach ($amenities AS $amenity) {
     $insert = "INSERT INTO Amenitites (Amen_name)
                VALUES ('$amenity')";
-    $resutl = mysqli_query($con, $insert);
+    $result = mysqli_query($con, $insert);
     if (!$result) {
         echo "Could not insert $amenity.\n";
     } else {
