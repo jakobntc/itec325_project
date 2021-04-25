@@ -1,6 +1,6 @@
 <?php
 
-php_ini('session.cookie_secure',true);
+//php_ini('session.cookie_secure',true);
 session_start();
 
 require_once("database-connection.php");
