@@ -20,8 +20,14 @@ if (!$oneRow) {
     echo "Invalid username or password.\n";
 } else {
     echo "Valid username & password provided.\n";
+    //php_ini('session.cookie_secure',true);
+    session_start();
+    echo $oneRow["F_Name"];
+    $_SESSION["firstName"] = $oneRow["F_Name"];
+    $_SESSION["verificaitonTime"] = time();
 }
 
 mysqli_close($con);
+header("Location: https://itec-php01.radford.edu/jclapsaddle/itec325/project/itec325_project/homepage.php");
 
 ?>
