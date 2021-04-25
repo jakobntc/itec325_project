@@ -30,19 +30,22 @@
         <!-- Sidebar  -->
         <nav id="sidebar">
             <div class="sidebar-header">
-                <h3 style="margin: 0 auto;">Name</h3>
                 <img id="profileIMG" src="photos/profile.jpg" alt="Profile Picture">
+                <h3 id="nameTxt">Name</h3>
             </div>
 
             <ul class="list-unstyled components">
                 <li>
-                    <a href="#" style="pointer-events: none">Account</a>
+                    <a href="#" style="pointer-events: none; background-color: #0061b5">Account</a>
                 </li>
                 <li>
                     <a href="currentReservations.php">Current Reservations</a>
                 </li>
                 <li>
                     <a href="pastReservations.php">Past Reservations</a>
+                </li>
+                <li>
+                    <a href="homepage.php">Home</a>
                 </li>
             </ul>
         </nav>

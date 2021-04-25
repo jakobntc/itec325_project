@@ -30,8 +30,8 @@
         <!-- Sidebar  -->
         <nav id="sidebar">
             <div class="sidebar-header">
-                <h3 style="margin: 0 auto;">Name</h3>
                 <img id="profileIMG" src="photos/profile.jpg" alt="Profile Picture">
+                <h3 id="nameTxt">Name</h3>
             </div>
 
             <ul class="list-unstyled components">
@@ -42,7 +42,10 @@
                     <a href="currentReservations.php">Current Reservations</a>
                 </li>
                 <li>
-                    <a href="#" style="pointer-events: none">Past Reservations</a>
+                    <a href="#" style="pointer-events: none; background-color: #0061b5">Past Reservations</a>
+                </li>
+                <li>
+                    <a href="homepage.php">Home</a>
                 </li>
             </ul>
         </nav>
@@ -58,7 +61,7 @@
                     <div class="card-body">
                         <h5 class="card-title">Miami FL</h5>
                         <p class="card-text">A beautiful home in the heart of Miami</p>
-                        <a href="#" class="btn btn-primary">Visit Page</a>
+                        <a href="viewARoom.php" class="btn btn-primary">Visit Page</a>
                     </div>
                 </div>
                 <p style="margin-left: 50px;"></p>
@@ -67,7 +70,7 @@
                     <div class="card-body">
                         <h5 class="card-title">Honolulu HI</h5>
                         <p class="card-text">A lovely hawaiian home</p>
-                        <a href="#" class="btn btn-primary">Visit Page</a>
+                        <a href="viewARoom.php" class="btn btn-primary">Visit Page</a>
                     </div>
                 </div>
                 <p style="margin-left: 50px;"></p>
@@ -76,7 +79,7 @@
                     <div class="card-body">
                         <h5 class="card-title">New York NY</h5>
                         <p class="card-text">A historic New York home</p>
-                        <a href="#" class="btn btn-primary">Visit Page</a>
+                        <a href="viewARoom.php" class="btn btn-primary">Visit Page</a>
                     </div>
                 </div>
             </div>
