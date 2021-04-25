@@ -16,6 +16,52 @@ require_once("utils/constants.php");
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
     <link rel='stylesheet' href='styles/reg_style.css'>
+    <script type="text/javascript">
+	function validatePasswords() {
+	    $pass = document.getElementById("password").value;
+	    $passConf = document.getElementById("passwordConfirmation").value;
+
+	    if ($pass === $passConf) {
+		$msg = false;
+	    } else {
+		$msg = "The password did not match";
+	    }
+	    displayMsg(document.getElementById("password"), $msg, true);
+        }
+
+	/*
+         * @author ibarland@radford.edu
+         * https://php.radford.edu/~itec325/2021spring-flo/Lectures/js/validate-v1-via-js/form0- validated.php
+         */
+         function insertAfter( $newNode, $referenceNode ) {
+             $referenceNode.parentNode.insertBefore( $newNode, $referenceNode.nextSibling );
+         }
+
+        /*
+        * displayMsg : node, string, boolean=false  ->  void
+        *
+        * $node : The node that the message/error is refering to.
+        * $msg  : The message/error that is being displayed to the user.
+        *     If this is false then no message/error will be displayed.
+        * $error : A boolean representing if the message being displayed is a
+        *          error or not.
+        *
+        * Displays a error-message / message to the user. The message is insert
+        * after the node that is being passed in.
+        */
+        function displayMsg( $node, $msg, $error=false) {
+            if ($msg===false) $msg="";
+            $msgNodeName = $node.id + (($error) ? "-err" : "-msg");
+            if (!document.getElementById($msgNodeName)) {
+                var $msgNode = document.createElement("span");
+                $msgNode.setAttribute( "id", $msgNodeName );
+                $msgNode.setAttribute( "class", (($error) ? "err-messgage" : "message") );
+                $msgNode.setAttribute( "style", "color: " + (($error) ? "red;" : "blue;") );
+                insertAfter( $msgNode, $node );
+            }
+            document.getElementById($msgNodeName).innerHTML = $msg;
+        }
+    </script>
 </head>
 
 <body>
@@ -80,13 +126,33 @@ require_once("utils/constants.php");
     <!-- row containing the entire form -->
     <div class="row">
         <div class="col">
-            <form method="post" id="registrationForm">
+            <form method="post" id="registrationForm" action="registration-handler.php">
+
+		<!-- Error reporting row -->
+		<div class="form-group row justify-content-center">
+		    <div class="col-sm align-self-center">
+			<?php
+			
+			if (isset($_GET['error'])) {
+			    $error = $_GET['error'];
+			    if ($error === "email"){
+				echo "<p class='display-4 text-center' style='color: red;'>Email is already in the system.</p>";
+			    }
+			    if ($error === "username"){
+				echo "<p class='display-4 text-center' style='color: red;'>Username is already in the system.</p>";
+			    }
+			}
+			
+			?>
+		    </div>
+		</div>
+		<!-- /Error reporting row -->
 
                 <!-- First row in the form. -->
                 <div class="form-group row justify-content-center">
                     <div class="col-sm-3 align-self-center">
                         <label for="username">Username</label>
-                        <input type="text" class="form-control" id="username" name="username" placeholder="Cannot contain spaces or symbols."   required minlength="10" maxlength="25" pattern="[a-zA-Z0-9]+">
+                        <input type="text" class="form-control" id="username" name="username" placeholder="Cannot contain spaces or symbols."   required minlength="10" maxlength="25" pattern="[a-zA-Z0-9]+" value="<?php echo $_GET['username'] ?>">
                     </div>
                 </div> <!-- /First row in the form. -->
 
@@ -94,13 +160,14 @@ require_once("utils/constants.php");
                 <div class="form-group row justify-content-center">
                     <div class="col-sm-3">
                         <label for="password">Password</label>
-                        <input type="password" class="form-control" id="password" name="password" placeholder="Must contain at lease one number and one symbol." required minlength="10" maxlength="25" pattern="(?=.*[0-9])(?=.*[a-zA-Z])([a-zA-Z0-9]+)">
+                        <input type="password" class="form-control" id="password" name="password" required minlength="10" maxlength="25" pattern="(?=.*[0-9])(?=.*[a-zA-Z])([a-zA-Z0-9]+)">
+			<small>Must contain at least one number</small>
                     </div>
                 </div>
                 <div class="form-group row justify-content-center">
                     <div class="col-sm-3">
                         <label for="passwordConfirmation">Confirm Password</label>
-                        <input type="password" class="form-control" id="passwordConfirmation" name="passwordConfirmation" required minlength="10" maxlength="25" pattern="(?=.*[0-9])(?=.*[a-zA-Z])([a-zA-Z0-9]+)">
+                        <input type="password" class="form-control" id="passwordConfirmation" name="passwordConfirmation" required minlength="10" maxlength="25" pattern="(?=.*[0-9])(?=.*[a-zA-Z])([a-zA-Z0-9]+)" onchange="validatePasswords();">
                     </div>
                 </div> <!-- /Second row in the form -->
                 
@@ -108,7 +175,7 @@ require_once("utils/constants.php");
                 <div class="form-group row justify-content-center">
                     <div class="col-sm-3">
                         <label for="firstName">First name</label>
-                        <input type="text" class="form-control" id="firstName" name="firtName" placeholder="Joe" required pattern="[a-zA-Z]+">
+                        <input type="text" class="form-control" id="firstName" name="firstName" placeholder="Joe" required pattern="[a-zA-Z]+" value="<?php echo $_GET['firstName'] ?>">
                     </div>
                 </div> <!-- /third row in the form. -->
 
@@ -116,7 +183,7 @@ require_once("utils/constants.php");
                 <div class="form-group row justify-content-center">
                     <div class="col-sm-3">
                         <label for="lastName">Last name</label>
-                        <input type="text" class="form-control" id="lastName" name="lastName" placeholder="Shmo" required pattern="[a-zA-Z]+">
+                        <input type="text" class="form-control" id="lastName" name="lastName" placeholder="Shmo" required pattern="[a-zA-Z]+" value="<?php echo $_GET['lastName'] ?>">
                     </div>
                 </div> <!-- /Fourth row in the form. -->
 
@@ -124,7 +191,7 @@ require_once("utils/constants.php");
                 <div class="form-group row justify-content-center">
                     <div class="col-sm-3">
                         <label for="email">Email</label>
-                        <input type="email" class="form-control" id="email" name="email" placeholder="joe.shmo@example.com" required>
+                        <input type="email" class="form-control" id="email" name="email" placeholder="joe.shmo@example.com" required value="<?php echo $_GET['email'] ?>">
                     </div>
                 </div> <!-- /Fifth row in the form. -->
 
