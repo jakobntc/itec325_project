@@ -56,29 +56,35 @@ require_once("utils/constants.php");
                         </form>
                     </li>
 		    <?php
-			/*
-			echo "GOT HERE";
-			var_dump(array_key_exists("firstName", $_SESSION));
-			echo $_SESSION["firstName"];
-			*/
-			if (array_key_exists("firstName", $_SESSION)) {
-			    echo "<li class='nav-item'><p class='m-2 text-white'>Hello "
-			       , $_SESSION["firstName"]
-			       , "!</p></li>";
-			}
+		    if (array_key_exists("firstName", $_SESSION)) {
+		        echo "<li class='nav-item'><p class='m-2 text-white'>Logged in as: "
+		           , $_SESSION["firstName"]
+		           , "!</p></li>";
+		    }
 		    ?>
                 </ul>
                 <ul class="nav navbar-nav navbar-right">
-                    <li class=nav-item">
-                        <form method="get" action="login.php">
-                            <button class="btn btn-primary" type="submit">Login</button>
-                        </form>
-                    </li>
-                    <li class=nav-item">
-                        <form method="get" action="registration.php">
-                            <button class="btn btn-primary" type="submit">Sign Up</button>
-                        </form>
-                    </li>
+		    <?php
+                    if (isset($_SESSION["verificaitonTime"])) {
+                        echo "<li class='nav-item'>"
+                    	, "<form method='get' action='#'>"
+                    	, "<button class='btn btn-primary' type='submit'>Logout</button>"
+                    	, "</form>"
+                    	, "</li>";
+                    } else {
+                        echo "<li class='nav-item'>"
+                           , "<form method='get' action='login.php''>"
+                           , "<button class='btn btn-primary' type='submit'>Login</button>"
+                           , "</form>"
+                           , "</li>"
+                           , "<li class=nav-item'>"
+                           , "<form method='get' action='registration.php'>"
+                           , "<button class='btn btn-primary' type='submit'>Sign Up</button>"
+                           , "</form>"
+                           , "</li>";
+                    }
+                    
+                    ?>
                 </ul>
             </div>
         </div>
