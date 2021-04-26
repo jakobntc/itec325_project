@@ -35,7 +35,51 @@ require_once("utils/constants.php");
     <script defer src="https://use.fontawesome.com/releases/v5.0.13/js/fontawesome.js" integrity="sha384-6OIrr52G08NpOFSZdxxz1xdNSndlD4vdcf/q2myIUVO0VsqaGHJsB0RaBE01VTOY" crossorigin="anonymous"></script>
 </head>
 
-<body>
+<body style="background-color: #f5f5f5">
+
+    <header>
+        <nav class='navbar navbar-expand-md navbar-dark fixed-top bg-dark'>
+            <div class="container-fluid">
+                <a class="navbar-brand" href="#">Team Alpha Website</a>
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarCollapse">
+                    <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
+                        <li class="nav-item active">
+                            <a class="nav-link" href="homepage.php">Home</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">Repair Tickets</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="postARoom.php">Post a Room</a>
+                        </li>
+                        <li class="nav-item">
+                            <form method="get" action="#">
+                                <input type="text" id="searchText" name="searchText" placeholder="Search...">
+                                </input>
+                                <button class="btn btn-primary" type="submit">Search</button>
+                            </form>
+                        </li>
+                    </ul>
+                    <ul class="nav navbar-nav navbar-right">
+                        <li class=nav-item">
+                            <form method="get" action="login.php">
+                                <button class="btn btn-primary" type="submit">Login</button>
+                            </form>
+                        </li>
+                        <li class=nav-item">
+                            <form method="get" action="registration.php">
+                                <button class="btn btn-primary" type="submit">Sign Up</button>
+                            </form>
+                        </li>  
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </header>
+
     <div class="wrapper">
         <!-- Sidebar  -->
         <nav id="sidebar">
@@ -54,20 +98,90 @@ require_once("utils/constants.php");
                 <li>
                     <a href="pastReservations.php">Past Reservations</a>
                 </li>
-                <li>
-                    <a href="homepage.php">Home</a>
-                </li>
             </ul>
         </nav>
 
         <!-- Page Content  -->
         <div id="content">
-
-            <h1>Account Settings</h1>
-
-            <p>Email: <?php echo $_SESSION["email"] ?></p>
-            <p>Address: 123 Street st City State</p>
-            <p>Phone: 555-555-5555</p>
+            <div class="container-fluid" style="padding-left: 250px">
+                <div class="row">
+                    <h1 style="padding-bottom: 20px">Account Settings</h1>
+                </div>
+                <!-- Email info -->
+                <div class="row">
+                    <div class="col">
+                        <div class="row">
+                            <div class="col">
+                                <h5>Email</h5>
+                                <p><?php echo $_SESSION["email"] ?></p>
+                            </div>
+                            <div class="col">
+                                <p>Edit</p>
+                            </div>
+                        </div>
+                        <hr style="margin-right: 375px">
+                    </div>
+                </div>
+                <!-- Gender info -->
+                <div class="row">
+                    <div class="col">
+                        <div class="row">
+                            <div class="col">
+                                <h5>Gender</h5>
+                                <p>Male</p>
+                            </div>
+                            <div class="col">
+                                <p>Edit</p>
+                            </div>
+                        </div>
+                        <hr style="margin-right: 375px">
+                    </div>
+                </div>
+                <!-- DOB info -->
+                <div class="row">
+                    <div class="col">
+                        <div class="row">
+                            <div class="col">
+                                <h5>Date of Birth</h5>
+                                <p>12/27/1997</p>
+                            </div>
+                            <div class="col">
+                                <p>Edit</p>
+                            </div>
+                        </div>
+                        <hr style="margin-right: 375px">
+                    </div>
+                </div>
+                <!-- Address info -->
+                <div class="row">
+                    <div class="col">
+                        <div class="row">
+                            <div class="col">
+                                <h5>Address</h5>
+                                <p>123 Street st City State</p>
+                            </div>
+                            <div class="col">
+                                <p>Edit</p>
+                            </div>
+                        </div>
+                        <hr style="margin-right: 375px">
+                    </div>
+                </div>
+                <!-- Phone info -->
+                <div class="row">
+                    <div class="col">
+                        <div class="row">
+                            <div class="col">
+                                <h5>Phone</h5>
+                                <p>555-555-5555</p>
+                            </div>
+                            <div class="col">
+                                <p>Edit</p>
+                            </div>
+                        </div>
+                        <hr style="margin-right: 375px">
+                    </div>
+                </div>
 
             <button type="button" id="changePassBtn">
                 <span>Change Password</span>

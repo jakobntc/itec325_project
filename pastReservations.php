@@ -25,7 +25,51 @@
     <script defer src="https://use.fontawesome.com/releases/v5.0.13/js/fontawesome.js" integrity="sha384-6OIrr52G08NpOFSZdxxz1xdNSndlD4vdcf/q2myIUVO0VsqaGHJsB0RaBE01VTOY" crossorigin="anonymous"></script>
 </head>
 
-<body>
+<body style="background-color: #f5f5f5">
+
+    <header>
+        <nav class='navbar navbar-expand-md navbar-dark fixed-top bg-dark'>
+            <div class="container-fluid">
+                <a class="navbar-brand" href="#">Team Alpha Website</a>
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarCollapse">
+                    <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
+                        <li class="nav-item active">
+                            <a class="nav-link" href="homepage.php">Home</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">Repair Tickets</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="postARoom.php">Post a Room</a>
+                        </li>
+                        <li class="nav-item">
+                            <form method="get" action="#">
+                                <input type="text" id="searchText" name="searchText" placeholder="Search...">
+                                </input>
+                                <button class="btn btn-primary" type="submit">Search</button>
+                            </form>
+                        </li>
+                    </ul>
+                    <ul class="nav navbar-nav navbar-right">
+                        <li class=nav-item">
+                            <form method="get" action="login.php">
+                                <button class="btn btn-primary" type="submit">Login</button>
+                            </form>
+                        </li>
+                        <li class=nav-item">
+                            <form method="get" action="registration.php">
+                                <button class="btn btn-primary" type="submit">Sign Up</button>
+                            </form>
+                        </li>  
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </header>
+
     <div class="wrapper">
         <!-- Sidebar  -->
         <nav id="sidebar">
@@ -43,9 +87,6 @@
                 </li>
                 <li>
                     <a href="#" style="pointer-events: none; background-color: #0061b5">Past Reservations</a>
-                </li>
-                <li>
-                    <a href="homepage.php">Home</a>
                 </li>
             </ul>
         </nav>
