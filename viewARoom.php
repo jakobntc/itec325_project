@@ -1,5 +1,80 @@
 <!DOCTYPE html>
 
+<?php
+
+require_once("database-connection.php");
+
+// Collecting all of the room information.
+//
+$roomID = $_GET["roomID"];
+
+$con = connectToDatabase();
+if (!$con) echo "Something went wrong<br/>";
+
+$query = "SELECT * FROM Rooms
+ 	  WHERE Room_ID = $roomID";
+$allRows = mysqli_query($con, $query);
+if (!$allRows) {
+    echo "The query failed.";
+} else {
+    $oneRow = mysqli_fetch_array($allRows);
+    if (!$oneRow) {
+	echo "The query returned 0 rows.<br/>";
+    } else {
+	echo "Query returned fine.<br/>";
+	$userID = $oneRow["User_ID"];
+	$title = $oneRow["Title"];
+	$desc = $oneRow["Description"];
+	$price = $oneRow["Price_Per_Night"];
+	$bedrooms = $oneRow["Number_of_Bedrooms"];
+	$bathrooms = $oneRow["Number_of_Bathrooms"];
+	$sqft = $oneRow["Square_footage"];
+	echo $bathrooms, "<br/>";
+    }
+}
+
+// Collecting all of the user information about the poster.
+//
+$query = "SELECT * FROM Users
+	  WHERE User_ID = $userID";
+$allRows = mysqli_query($con, $query);
+if (!$allRows) {
+    echo "The query failed.";
+} else {
+    $oneRow = mysqli_fetch_array($allRows);
+    if (!$oneRow) {
+	echo "The query returned 0 rows.<br/>";
+    } else {
+	echo "Query returned fine.<br/>";
+	$firstName = $oneRow["F_Name"];
+	$lastName  = $oneRow["L_Name"];
+    }
+}
+
+$amenities = array();
+
+// Collecting all of the room amenity information.
+//
+$query = "SELECT a.Amen_name FROM Room_Amenities ra
+	  INNER JOIN Amenities a ON ra.Amen_ID = a.Amen_ID
+	  WHERE Room_ID = $roomID";
+$allRows = mysqli_query($con, $query);
+if (!$allRows) {
+    echo "The query failed.";
+} else {
+    while ($oneRow = mysqli_fetch_assoc($allRows)) {
+	echo "Query returned fine.<br/>";
+	array_push($amenities, $oneRow["Amen_name"]);
+    }
+}
+
+var_dump($amenities);
+
+
+mysqli_close($con);
+
+?>
+
 <html lang="en">
 
  <head>
@@ -63,15 +138,15 @@
     <!-- Row 1 -->
     <div class="row m-2">
         <div class="col-sm">
-            <h1 class="display-1 text-center" style="">Title of the room</h1>
+            <h1 class="display-1 text-center" style=""><?php echo $title ?></h1>
         </div>
     </div>
     
     <!-- Row 2 -->
-    <div class="row justify-content-start">
+    <div class="row justify-content-center">
         
         <!-- Location Column -->
-        <div class="col-sm-3 align-self-start">
+        <div class="col-sm-3">
             <!-- Inside row 1 -->
             <div class="row p-2">
                 <div class="col-sm align-self-start">
@@ -95,7 +170,7 @@
                     <div class="card text-center bg-primary text-white">
                         <h1 class="card-header">Pricing</h1>
                         <div class="card-body">
-                            <h3 class="card-title font-weight-bold">$100 per night</h3>
+                            <h3 class="card-title font-weight-bold"><?php echo "\$$price per night!"; ?></h3>
                             <p class="card-text">This room will only be available for a max stay of 3 consegutave? nights.</p>
                             <p class="card-text text-warning font-weight-light font-italic" style="font-size: 0.8rem">There will be a $50 upcharge if pets are staying also.</p>
                         </div>
@@ -138,11 +213,12 @@
         <!-- /Carousel Column -->
 
         <!-- User profile card column-->
-        <div class="col-sm align-self-center">
-            <div class="card" style="width: 18rem;">
+        <div class="col-sm-3 text-center align-self-center">
+            <div class="card" style="width: 23rem;">
+		<h1 class="card-header">Room Poster</h1>
                 <img class="card-img-top" src="#" alt="Photo of Rentor">
                 <div class="card-body">
-                    <h3 class="card-title">Account name</h3>
+                    <h3 class="card-title"><?php echo "$firstName $lastName"; ?></h3>
                     <p class="card-text">This is going to be the person description on their account or something.</p>
                     <a href="#" class="btn btn-primary">View Profile</a>
                 </div>
@@ -158,7 +234,7 @@
         <!-- description Column -->
         <div class="col-sm-6">
             <h3 style="text-align: center;">Description</h3>
-            <p class="border" style="text-align: center;">The description of the room will go here.</p>
+            <p class="border" style="text-align: center;"><?php echo $desc; ?></p>
         </div>
         <!-- /description Column -->
 
@@ -173,25 +249,23 @@
                     <h1>Amenities</h1>
                 </div>
                 <ul class="list-group">
-                    <li class="list-group-item"><p>Washer and Dryer</p></li>
-                    <li class="list-group-item"><p>Pets Allowed</p></li>
-                    <li class="list-group-item"><p>Dishwasher</p></li>
-                    <li class="list-group-item"><p>Balcony</p></li>
-                    <li class="list-group-item"><p>Garage</p></li>
-                    <li class="list-group-item"><p>Swimming Pool</p></li>
+		    <?php
+		    foreach($amenities AS $amenity) {
+			echo "<li class='list-group-item'>$amenity</li>";
+		    }
+		    ?>
                 </ul>
             </div>
         </div>
         <div class="col-sm">
             <div class="card text-center">
                 <div class="card-header">
-                    <h1>Rooms specs</h1>
+                    <h1>Room specs</h1>
                 </div>
                 <ul class="list-group">
-                    <li class="list-group-item"><p>Square Foot: some number</p></li>
-                    <li class="list-group-item"><p>Number of Bedrooms: some number</p></li>
-                    <li class="list-group-item"><p>Number of Bathrooms: some number</p></li>
-                    <li class="list-group-item"><p>Someing allowed?: Yes / No</p></li>
+                    <li class="list-group-item"><?php echo "Square Footage: $sqft"; ?></li>
+                    <li class="list-group-item"><?php echo "Number of bedrooms: $bedrooms"; ?></li>
+                    <li class="list-group-item"><?php echo "Number of bathrooms: $bathrooms"; ?></li>
                 </ul>
             </div>
         </div>
