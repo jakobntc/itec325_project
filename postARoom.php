@@ -34,23 +34,23 @@
         <label for="amenities">Amenities *</label>
         <table id="amenities" name="amenities">
             <tr>
-                <th><input type="checkbox" id="ac">Air Conditioning</th>
-                <th><input type="checkbox" id="washerDryer">Washer and Dryer</th>
-                <th><input type="checkbox" id="petsAllowed">Pets Allowed</th>
+                <th><input type="checkbox" name="ac" id="ac" value="Air Conditioning">Air Conditioning</th>
+                <th><input type="checkbox" name="washerDryer" id="washerDryer" value="Washer and Dryer">Washer and Dryer</th>
+                <th><input type="checkbox" name="petsAllowed" id="petsAllowed" value="Pets Allowed">Pets Allowed</th>
             </tr>
             <tr>
-                <th><input type="checkbox" id="dishwasher">Dishwasher</th>
-                <th><input type="checkbox" id="balcony">Balcony</th>
-                <th><input type="checkbox" id="garage">Garage</th>
+                <th><input type="checkbox" name="dishwasher" id="dishwasher" value="Dishwasher">Dishwasher</th>
+                <th><input type="checkbox" name="balcony" id="balcony" value="Balcony">Balcony</th>
+                <th><input type="checkbox" name="garage" id="garage" value="Garage">Garage</th>
             </tr>
             <tr>
-                <th><input type="checkbox" id="pool">Swimming Pool</th>
-                <th><input type="checkbox" id="fitnessCenter">Fitness Center</th>
-                <th><input type="checkbox" id="privateEntrance">Private Entrance</th>
+                <th><input type="checkbox" name="pool" id="pool" value="Swimming Pool">Swimming Pool</th>
+                <th><input type="checkbox" name="fitnessCenter" id="fitnessCenter" value="Fitness Center">Fitness Center</th>
+                <th><input type="checkbox" name="privateEntrance" id="privateEntrance" value="Private Entrance">Private Entrance</th>
             </tr>
         </table><br>
 
-        <th><input type="checkbox" id="smoking">Smoking allowed *</th><br><br>
+        <th><input type="checkbox" id="smoking" value="Smoking Allowed">Smoking allowed *</th><br><br>
 
         <label for="img">Select Photos:</label>
         <input type="file" id="img" name="img" accept="image/*"><br><br>

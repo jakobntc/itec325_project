@@ -22,6 +22,8 @@ if (!$oneRow) {
     echo "Valid username & password provided.\n";
     //php_ini('session.cookie_secure',true);
     session_start();
+
+    $_SESSION["userID"] = $oneRow["User_ID"];
     $_SESSION["firstName"] = $oneRow["F_Name"];
     $_SESSION["lastName"] = $oneRow["L_Name"];
     $_SESSION["email"] = $oneRow["Email"];
