@@ -1,0 +1,20 @@
+label {
+    font-size: 20px;
+    font-weight: "bold";
+    margin-top: 20px;
+    margin-left: 50px;
+    color: white;
+    text-shadow: 1px 1px 1px #000000;
+}
+
+.postInput {
+    border: 2px solid white;
+    background-color: #164f81;
+    color: white;
+    margin-top: 20px;
+}
+
+th {
+    color: white;
+    text-shadow: 1px 1px 1px #000000;
+}

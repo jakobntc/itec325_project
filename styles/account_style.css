@@ -75,6 +75,7 @@ a:focus {
     top: 0;
     left: 0;
     height: 100vh;
+    margin-top: 70px;
     z-index: 999;
     background: #026dc9;
     color: #fff;
@@ -165,7 +166,9 @@ a.article:hover {
 #content {
     width: calc(100% - 250px);
     padding: 40px;
-    min-height: 100vh;
+    margin-top: 50px;
+    padding-left: 100px;
+    /* min-height: 100vh; */
     transition: all 0.3s;
     position: absolute;
     top: 0;

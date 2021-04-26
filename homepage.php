@@ -165,7 +165,7 @@ require_once("utils/constants.php");
             <h2 class="featurette-heading">Radford. <span class="text-muted">Home of the Highlanders.</span></h2>
             <p class="lead">One of the places we "opperate"!</p>
         </div>
-        <div = class="col-md-5">
+        <div class="col-md-5">
             <img id="featurettePhoto" src="https://www.insidehighered.com/sites/default/server_files/media/image_34.png" width="500px" height="500"></img>
         </div>
     </div>
@@ -177,7 +177,7 @@ require_once("utils/constants.php");
             <h2 class="featurette-heading">Blacksburg. <span class="text-muted">Home of the Hokies.</span></h2>
             <p class="lead">One of the OTHER places we "opperate"!</p>
         </div>
-        <div = class="col-md-5">
+        <div class="col-md-5">
             <img id="featurettePhoto" src="https://static.onecms.io/wp-content/uploads/sites/24/2019/10/GettyImages-533209873-2000.jpg" width="500px" height="500"></img>
         </div>
     </div>
