@@ -1,7 +1,7 @@
 <?php
 session_start();
 
-if ( (time() - $_SESSION["verificaitonTime"]) >= 90) {
+if ( (time() - $_SESSION["verificaitonTime"]) >= 800) {
     session_unset();
     session_destroy();
     setcookie( session_name(), "", 1, "/");
