@@ -1,6 +1,16 @@
 <?php
-    require_once("utils/utils.php");
-    require_once("utils/constants.php");
+session_start();
+
+if ( (time() - $_SESSION["verificaitonTime"]) >= 90) {
+    session_unset();
+    session_destroy();
+    setcookie( session_name(), "", 1, "/");
+} else {
+    $_SESSION["lastVerified"] = time() - $_SESSION["verificaitonTime"];
+}
+
+require_once("utils/utils.php");
+require_once("utils/constants.php");
 ?>
 
 <!DOCTYPE html>
@@ -31,7 +41,7 @@
         <nav id="sidebar">
             <div class="sidebar-header">
                 <img id="profileIMG" src="photos/profile.jpg" alt="Profile Picture">
-                <h3 id="nameTxt">Name</h3>
+                <h3 id="nameTxt"><?php echo $_SESSION["firstName"], " ", $_SESSION["lastName"] ?></h3>
             </div>
 
             <ul class="list-unstyled components">
@@ -55,7 +65,7 @@
 
             <h1>Account Settings</h1>
 
-            <p>Email: email@email.com</p>
+            <p>Email: <?php echo $_SESSION["email"] ?></p>
             <p>Address: 123 Street st City State</p>
             <p>Phone: 555-555-5555</p>
 
