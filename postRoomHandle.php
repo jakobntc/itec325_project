@@ -1,18 +1,7 @@
 <?php
-
-//ini_set('display_errors', 1); 
-//ini_set('display_startup_errors', 1);
 error_reporting(E_ALL);
 
 session_start();
-
-//date_default_timezone_set('America/New_York'); //          
-/*
-require_once('utils.php');
-require_once('validate.php');
-require_once("constants.php");  // Use `$GLOBALS` to use these values, inside a function.
-*/
-
 
 require_once("database-connection.php");
 
@@ -29,6 +18,8 @@ $bedrooms = mysqli_real_escape_string($con, $_POST["bedrooms"]);
 $bathrooms = mysqli_real_escape_string($con, $_POST["bathrooms"]);
 $sqft = mysqli_real_escape_string($con, $_POST["sqft"]);
 
+echo var_dump(array_key_exists("ac", $_POST));
+
 // Information for the Room_Amenities table contained inside the $amenities array
 $amenities["ac"] = array_key_exists("ac", $_POST) ? mysqli_real_escape_string($con, $_POST["ac"]) : false;
 $amenities["washerDryer"] = array_key_exists("washerDryer", $_POST) ? mysqli_real_escape_string($con, $_POST["washerDryer"]) : false;
@@ -41,24 +32,33 @@ $amenities["fitnessCenter"] = array_key_exists("fitnessCenter", $_POST) ? mysqli
 $amenities["privateEntrance"] = array_key_exists("privateEntrance", $_POST) ? mysqli_real_escape_string($con, $_POST["privateEntrance"]) : false;
 $roomID = false;
 
+echo var_dump($amenities);
+
 $amenNums = array();
 
 // Storing all amenity numbers that were included in the room.
 //
-foreach ($amenities AS $amenity) {
-    $query = "SELECT Amen_ID FROM Amenities
-	      WHERE Amen_Name LIKE '$amenity'";
+foreach ($amenities AS $key => $amenity) {
+    if ($amenities[$key] !== false) {
+        $query = "SELECT Amen_ID FROM Amenities
+                  WHERE Amen_Name LIKE '$amenity'";
 
-    $allRows = mysqli_query($con, $query);
-    if (!$allRows) echo "QUERY FAILED";
+        //echo $query;
 
-    $oneRow = mysqli_fetch_array($allRows);
-    if (!$oneRow) {
-	echo "The query returned 0 rows.<br/>";
-    } else {
-	$amenNums["$amenity"] = $oneRow["Amen_ID"];
+        $allRows = mysqli_query($con, $query);
+        if (!$allRows) echo "QUERY FAILED";
+
+        $oneRow = mysqli_fetch_array($allRows);
+        if (!$oneRow) {
+            echo "The query returned 0 rows.<br/>";
+        } else {
+	    echo "Got amen_ID for $amenity<br/>";
+            $amenNums[$amenity] = $oneRow["Amen_ID"];
+        }
     }
 }
+
+var_dump($amenNums);
 
 $insert = "INSERT INTO Rooms ( User_ID
 			     , Title
@@ -102,15 +102,11 @@ if (!$allRows) {
 
 // Inserting the room amenity information into the Room_Amenities table
 //
-foreach ($amenities AS $amenity) {
+foreach ($amenNums AS $amenNum) {
 
-    $insert = "INSERT INTO Room_Amenities ( Room_ID
-    				      , Amen_ID
-         				      )
-       	   VALUES ( $roomID
-      		  , "
-      		  . $amenNums["$amenity"]
-      		  . ")";
+    $insert = "INSERT INTO Room_Amenities
+       	       VALUES ( $roomID, $amenNum )";
+
     echo "<br/>", $insert, "<br/>";
     $result = mysqli_query($con, $insert);
     if (!$result) {
