@@ -1,4 +1,16 @@
 <?php
+error_reporting(E_ALL);
+session_start();
+
+if ( (time() - $_SESSION["verificaitonTime"]) >= 90) {
+    session_unset();
+    session_destroy();
+    setcookie( session_name(), "", 1, "/");
+} else {
+    $_SESSION["lastVerified"] = time() - $_SESSION["verificaitonTime"];
+}
+
+
 require_once("utils/utils.php");
 require_once("utils/constants.php");
 ?>
@@ -43,17 +55,36 @@ require_once("utils/constants.php");
                             <button class="btn btn-primary" type="submit">Search</button>
                         </form>
                     </li>
+		    <?php
+		    if (array_key_exists("firstName", $_SESSION)) {
+		        echo "<li class='nav-item'><p class='m-2 text-white'>Logged in as: "
+		           , $_SESSION["firstName"]
+		           , "!</p></li>";
+		    }
+		    ?>
                 </ul>
                 <ul class="nav navbar-nav navbar-right">
-                    <li class=nav-item">
-                        <form method="get" action="login.php">
-                            <button class="btn btn-primary" type="submit">Login</button>
-                        </form>
-                    </li>
-                    <li class=nav-item">
-                        <form method="get" action="registration.php">
-                            <button class="btn btn-primary" type="submit">Sign Up</button>
-                        </form>
+		    <?php
+                    if (isset($_SESSION["verificaitonTime"])) {
+                        echo "<li class='nav-item'>"
+                    	, "<form method='get' action='#'>"
+                    	, "<button class='btn btn-primary' type='submit'>Logout</button>"
+                    	, "</form>"
+                    	, "</li>";
+                    } else {
+                        echo "<li class='nav-item'>"
+                           , "<form method='get' action='login.php''>"
+                           , "<button class='btn btn-primary' type='submit'>Login</button>"
+                           , "</form>"
+                           , "</li>"
+                           , "<li class=nav-item'>"
+                           , "<form method='get' action='registration.php'>"
+                           , "<button class='btn btn-primary' type='submit'>Sign Up</button>"
+                           , "</form>"
+                           , "</li>";
+                    }
+                    
+                    ?>
                 </ul>
             </div>
         </div>
@@ -186,7 +217,7 @@ require_once("utils/constants.php");
     
     <footer class="container">
         <p class="float-right"><a href="#">Back to top</a></p>
-        <p>&copy; 2017-2019, inc. &middot; <a href="#">Privacy</a> &middot; <a href="#">Terms</a></p>
+        <p>&copy; 2017-2019, inc. &middot; <a href="#">Privacy</a> &middot; <a href="#">Terms</a>The time it has been since you have verified who you are is: <?php echo $_SESSION["lastVerified"] ?></p>
     </footer>
 </body>
 </html>
