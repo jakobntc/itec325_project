@@ -67,6 +67,11 @@ require_once("utils/constants.php");
 		    <?php
                     if (isset($_SESSION["verificaitonTime"])) {
                         echo "<li class='nav-item'>"
+                    	, "<form method='get' action='account.php'>"
+			, "<button class='btn btn-primary' type='submit'>Account</button>"
+                    	, "</form>"
+			, "</li>"
+			, "<li class='nav-item'>"
                     	, "<form method='get' action='logout-handler.php'>"
                     	, "<button class='btn btn-primary' type='submit'>Logout</button>"
                     	, "</form>"
