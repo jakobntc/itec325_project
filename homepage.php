@@ -179,7 +179,7 @@ require_once("utils/constants.php");
                 <p>The is the first sample room that is going to be displayed. This could be a short discription a user provides about their room or something. And then the view details button could take the user the the registration page for this specific room.</p>
 		<form method="get" action="viewARoom.php" id="homepageRoom3">
 		    <input type="hidden" name="roomID" id="hiddenInput3"/>
-		    <button class="btn btn-secondary" onclick="document.getElementById('hiddenInput3').value = 1; document.getElementById('homepageRoom3').submit();">View details &raquo;</button>
+		    <button class="btn btn-secondary" onclick="document.getElementById('hiddenInput3').value = 6; document.getElementById('homepageRoom3').submit();">View details &raquo;</button>
 		</form>
             </div>
         </div>
