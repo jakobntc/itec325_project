@@ -1,6 +1,16 @@
 <?php
-    require_once("utils/utils.php");
-    require_once("utils/constants.php");
+session_start();
+
+if ( (time() - $_SESSION["verificaitonTime"]) >= 800) {
+    session_unset();
+    session_destroy();
+    setcookie( session_name(), "", 1, "/");
+} else {
+    $_SESSION["lastVerified"] = time() - $_SESSION["verificaitonTime"];
+}
+
+require_once("utils/utils.php");
+require_once("utils/constants.php");
 ?>
 
 <!DOCTYPE html>
@@ -75,7 +85,7 @@
         <nav id="sidebar">
             <div class="sidebar-header">
                 <img id="profileIMG" src="photos/profile.jpg" alt="Profile Picture">
-                <h3 id="nameTxt">Name</h3>
+                <h3 id="nameTxt"><?php echo $_SESSION["firstName"], " ", $_SESSION["lastName"] ?></h3>
             </div>
 
             <ul class="list-unstyled components">
@@ -93,7 +103,6 @@
 
         <!-- Page Content  -->
         <div id="content">
-
             <div class="container-fluid" style="padding-left: 250px">
                 <div class="row">
                     <h1 style="padding-bottom: 20px">Account Settings</h1>
@@ -104,7 +113,7 @@
                         <div class="row">
                             <div class="col">
                                 <h5>Email</h5>
-                                <p>email@email.com</p>
+                                <p><?php echo $_SESSION["email"] ?></p>
                             </div>
                             <div class="col">
                                 <p>Edit</p>

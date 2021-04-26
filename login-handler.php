@@ -1,4 +1,4 @@
-<?php
+https://itec-php01.radford.edu/jclapsaddle/itec325/project/               itec325_project/homepage.php<?php
 
 require_once("database-connection.php");
 
@@ -22,8 +22,11 @@ if (!$oneRow) {
     echo "Valid username & password provided.\n";
     //php_ini('session.cookie_secure',true);
     session_start();
-    echo $oneRow["F_Name"];
+
+    $_SESSION["userID"] = $oneRow["User_ID"];
     $_SESSION["firstName"] = $oneRow["F_Name"];
+    $_SESSION["lastName"] = $oneRow["L_Name"];
+    $_SESSION["email"] = $oneRow["Email"];
     $_SESSION["verificaitonTime"] = time();
 }
 

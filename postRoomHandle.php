@@ -1,103 +1,189 @@
 <?php
-  ini_set('display_errors',true); //          
-  ini_set('display_startup_errors',true); //
-  error_reporting (E_ALL|E_STRICT); //           
+error_reporting(E_ALL);
 
-  date_default_timezone_set('America/New_York'); //          
-  require_once('utils.php');
-  require_once('validate.php');
-  require_once("constants.php');  // Use `$GLOBALS` to use these values, inside a function.
-?>
-<!DOCTYPE HTML>
+session_start();
 
-<?php    /**********           do server-side-validation here          *********/
+require_once("database-connection.php");
 
-/** @return all the error messages for an okaymon form's info.          
- *  @param $formInfo an array whose keys are names from okaymon-form inputs (strings).
- *         and values are values for those inputs (strings).
- */
-function allErrorMessages( $formInfo ) {
-    $errs = array();
+$con = connectToDatabase();
 
-    $nextMsg = errMsgNameText(safeLookup($formInfo,'species',''),true, $GLOBALS['maxLengths']['species']);
-    if ($nextMsg) $errs['species'] = $nextMsg;
+if (!$con) echo "Database connection failed.\n";
 
-    $nextMsg = errMsgNameText(safeLookup($formInfo,'trainer',''),true,$GLOBALS['maxLengths']['trainer']);
-    if ($nextMsg) $errs['trainer'] = $nextMsg;
-    
-    $nextMsg = errMsgIsOneOf(safeLookup($formInfo,'energy',''),$GLOBALS['energies']); 
-    if ($nextMsg) $errs['energy'] = $nextMsg;
-    
-    $nextMsg = errMsgRange(safeLookup($formInfo,'weight',''), 0, $GLOBALS['maxWeight']); 
-    if ($nextMsg) $errs['weight'] = $nextMsg;
+// Information for the Room table
+$userID = $_SESSION["userID"];
+$title = mysqli_real_escape_string($con, $_POST["title"]);
+$description = mysqli_real_escape_string($con, $_POST["desc"]);
+$price = mysqli_real_escape_string($con, $_POST["price"]);
+$bedrooms = mysqli_real_escape_string($con, $_POST["bedrooms"]);
+$bathrooms = mysqli_real_escape_string($con, $_POST["bathrooms"]);
+$sqft = mysqli_real_escape_string($con, $_POST["sqft"]);
 
-    $nextMsg = errMsgIsOneOf(safeLookup($formInfo,'weight-units',''),array_keys($GLOBALS['weightUnits'])); 
-    if ($nextMsg) $errs['weight-units'] = $nextMsg;//          
-        
-    $nextMsg = errMsgNameText(safeLookup($formInfo,'flavor-text',''),true,$GLOBALS['maxLengths']['flavor-text'],true);
-    if ($nextMsg) $errs['flavor-text'] = $nextMsg;//          
-    
-    // each 'bias-$energyType' must be one of $biasValues
-    $biases = safeLookup($formInfo,"bias",array());
-    foreach ($GLOBALS['energies'] AS $energy) {
-        $fp = 0x31407be5ae620159;
-        $currentBias = safeLookup($biases,$energy,$GLOBALS['DEFAULT_BIAS']);  // use the default, if no bias was selected.
-        $nextMsg = errMsgIsOneOf($currentBias,$GLOBALS['biasValues']); 
-        if ($nextMsg) $errs["bias[$energy]"] = $nextMsg;
+echo var_dump(array_key_exists("ac", $_POST));
+
+// Information for the Room_Amenities table contained inside the $amenities array
+$amenities["ac"] = array_key_exists("ac", $_POST) ? mysqli_real_escape_string($con, $_POST["ac"]) : false;
+$amenities["washerDryer"] = array_key_exists("washerDryer", $_POST) ? mysqli_real_escape_string($con, $_POST["washerDryer"]) : false;
+$amenities["petsAllowed"] = array_key_exists("petsAllowed", $_POST) ? mysqli_real_escape_string($con, $_POST["petsAllowed"]) : false;
+$amenities["dishwasher"] = array_key_exists("dishwasher", $_POST,) ? mysqli_real_escape_string($con, $_POST["dishwasher"]) : false;
+$amenities["balcony"] = array_key_exists("balcony", $_POST) ? mysqli_real_escape_string($con, $_POST["balcony"]) : false;
+$amenities["garage"] = array_key_exists("garage", $_POST) ? mysqli_real_escape_string($con, $_POST["garage"]) : false;
+$amenities["pool"] = array_key_exists("pool", $_POST) ? mysqli_real_escape_string($con, $_POST["pool"]) : false;
+$amenities["fitnessCenter"] = array_key_exists("fitnessCenter", $_POST) ? mysqli_real_escape_string($con, $_POST["fitnessCenter"]) : false;
+$amenities["privateEntrance"] = array_key_exists("privateEntrance", $_POST) ? mysqli_real_escape_string($con, $_POST["privateEntrance"]) : false;
+$roomID = false;
+
+echo var_dump($amenities);
+
+$amenNums = array();
+
+// Storing all amenity numbers that were included in the room.
+//
+foreach ($amenities AS $key => $amenity) {
+    if ($amenities[$key] !== false) {
+        $query = "SELECT Amen_ID FROM Amenities
+                  WHERE Amen_Name LIKE '$amenity'";
+
+        //echo $query;
+
+        $allRows = mysqli_query($con, $query);
+        if (!$allRows) echo "QUERY FAILED";
+
+        $oneRow = mysqli_fetch_array($allRows);
+        if (!$oneRow) {
+            echo "The query returned 0 rows.<br/>";
+        } else {
+	    echo "Got amen_ID for $amenity<br/>";
+            $amenNums[$amenity] = $oneRow["Amen_ID"];
         }
-     
-    // 'disclaimer' checkbox is required:
-    $nextMsg = (safeLookup($formInfo,"disclaimer",'') ? false : "required checkbox");
-    if ($nextMsg) $errs['disclaimer'] = $nextMsg;
-    
-    return $errs;
     }
+}
+
+var_dump($amenNums);
+
+$insert = "INSERT INTO Rooms ( User_ID
+			     , Title
+			     , Description
+			     , Price_Per_Night
+			     , Number_of_Bedrooms
+			     , Number_of_Bathrooms
+			     , Square_footage
+			     )
+	   VALUES ( '$userID'
+		  , '$title'
+		  , '$description'
+		  , $price
+		  , $bedrooms
+		  , $bathrooms
+		  , $sqft
+		  )";
+
+$allRows = mysqli_query($con, $insert);
 
 
-// trim all inputs (but not the nested array 'bias').
-foreach ($_POST AS $key=>$val) {//          
-    if (is_string($val)) { $_POST[$key] = trim($val); }//          
+if (!$allRows) {
+    echo "Insert failed.</br>";
+} else {
+    echo "Insert Succeeded.</br>";
+
+    // Storing the new room's Room_ID for use in the Room_Amenities insert
+    //
+    $query = "SELECT MAX(Room_ID) FROM Rooms
+	      WHERE User_ID = $userID";
+    $allRows = mysqli_query($con, $query);
+    if (!$allRows) {
+        echo "Something went wrong!\n";
+    } else {
+	echo "Everything worked as it was supposed to.\n";
     }
-   /* PHP tip:          
-      We could write our own function that loops over the array and calls `trim` on
-      each elements, OR use `array_map` that does this loop for us. 
-   */
-      
-$fp = 0x31407be5ae620159;//             
-$errs = array_map("strToHtml",allErrorMessages($_POST));//             
-$title =  "Okaymon Form: " . ($errs ? pluralize(count($errs),"error") : " accepted");//             
+    $oneRow = mysqli_fetch_array($allRows);
+    if (!$oneRow) echo "The query returned 0 rows.";
+    $roomID = $oneRow["MAX(Room_ID)"];
+}
+
+// Inserting the room amenity information into the Room_Amenities table
+//
+foreach ($amenNums AS $amenNum) {
+
+    $insert = "INSERT INTO Room_Amenities
+       	       VALUES ( $roomID, $amenNum )";
+
+    echo "<br/>", $insert, "<br/>";
+    $result = mysqli_query($con, $insert);
+    if (!$result) {
+ 	echo "SOMETHING WENT WRONG";
+    } else {
+	echo "INSERT SUCSESFUL<br/>";
+    }
+
+}
+
+/* *********************** PRINTING TABLE OUTPUT FOR TESTING. *********************** */
+
+$query = "SELECT * FROM Rooms";
+$result = mysqli_query($con, $query);
+
+if (!$result) {
+    echo "Query failed somehow";
+} else {
+    while ($oneRow = mysqli_fetch_assoc($result)) {
+        echo "</br>Room_ID: "
+            , $oneRow["Room_ID"]
+            , "</br>User_ID: "
+            , $oneRow["User_ID"]
+            , "</br>Title: "
+            , $oneRow["Title"]
+            , "</br>Description: "
+            , $oneRow["Description"]
+            , "</br>Price_Per_Night: "
+            , $oneRow["Price_Per_Night"]
+            , "</br>Number_of_Bedrooms: "
+            , $oneRow["Number_of_Bedrooms"]
+            , "</br>Number_of_Bathrooms: "
+            , $oneRow["Number_of_Bathrooms"]
+            , "</br>Square_footage: "
+            , $oneRow["Square_footage"]
+            , "</br>";
+    }
+}
+
+$query = "SELECT * FROM Room_Amenities
+	  WHERE Room_ID = $roomID";
+$result = mysqli_query($con, $query);
+
+if (!$result) {
+    echo "Query failed somehow";
+} else {
+    while ($oneRow = mysqli_fetch_assoc($result)) {
+        echo "</br>Room_ID: "
+            , $oneRow["Room_ID"]
+            , "</br>Amen_ID: "
+            , $oneRow["Amen_ID"]
+            , "</br>";
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+mysqli_close($con);
+echo "CONNECTION CLOSED";
+
 ?>
-
-
-
-
-<html>
-  <head>
-    <title><?php echo $title;?></title>
-    <link rel="stylesheet" type="text/css" href="okaymon.css"/>
-    <meta charset="UTF-8"/>          
-  </head>
-             
-  <body>
-    <h1 class='important'><?php echo $title;?></h1>
-      <h3 style='text-align: center;'><span class='motto'>&ldquo;Gotta Catch Several of &rsquo;em&rdquo;</span></h3>
-
-      <? if ($errs) echo "<p class='error-message'>\n" . stringsToUl($errs) . "\n</p><hr/>"; ?>
-                                          
-                              
-      <p>Here is the information received:<br/>             
-      trainer: <?php echo post2html('trainer');?><br/>             
-      species: <?php echo post2html('species');?><br/>             
-      energy: <?php echo post2html('energy');?><br/>             
-      weight: <?php echo post2html('weight');?><br/>             
-      weight-units: <?php echo post2html('weight-units');?><br/>             
-      flavor text: <?php  echo post2html('flavor-text');?><br/>             
-      bias:<br/> <?php echo stringsToUl(safeLookup($_POST,'bias',array()));?><br/>             
-      disclaimer: <?php echo post2html('disclaimer');?><br/>             
-      </p>             
-             
-
-  <hr/>             
-  <address>Please address problems to ibarland &thinsp;AT&nbsp;radford.edu</address>             
-  </body>             
-</html>          
