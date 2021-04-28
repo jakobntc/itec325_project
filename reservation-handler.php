@@ -21,7 +21,7 @@ if ( (time() - $_SESSION["verificaitonTime"]) >= 800) {
     $cost   = $_POST["cost"];
 
     $query = "SELECT * FROM Reservations
-	      WHERE Room_ID = $roomID";
+	      WHERE Reserving_User_ID = $userID";
     $allRows = mysqli_query($con, $query);
     if (!$allRows) echo "Something went wrong with the reservations query.<br />";
     $oneRow = mysqli_fetch_array($allRows);
