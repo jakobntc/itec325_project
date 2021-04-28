@@ -57,6 +57,7 @@
     </header>
 
     <div class="container" style="margin-top: 50px; width: 700px">
+ 	<form method="post" action="postRoomHandle.php" id="roomPosting">
         <div class="row">
             <div class="col-sm">
                 <div class="row justify-content-center">
