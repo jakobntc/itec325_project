@@ -2,6 +2,17 @@
 
 <?php
 
+ error_reporting(E_ALL);
+ session_start();
+ 
+ if ( (time() - $_SESSION["verificaitonTime"]) >= 800) {
+     session_unset();
+     session_destroy();
+     setcookie( session_name(), "", 1, "/");
+ } else {
+     $_SESSION["lastVerified"] = time() - $_SESSION["verificaitonTime"];
+ }
+
 require_once("database-connection.php");
 
 $roomID = $_GET["roomID"];
@@ -105,47 +116,70 @@ mysqli_close($con);
 <body>
 
 <header>
-    <nav class='navbar navbar-expand-md navbar-dark fixed-top bg-dark'>
-        <div class="container-fluid">
-            <a class="navbar-brand" href="homepage.php">Team Alpha Website</a>
-            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarCollapse">
-                <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
-                    <li class="nav-item active">
-                        <a class="nav-link" href="homepage.php">Home</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">Repair Tickets</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">Post a Room</a>
-                    </li>
-                    <li class="nav-item">
-                        <form method="get" action="#">
-                            <input type="text" id="searchText" name="searchText" placeholder="Search...">
-                            </input>
-                            <button class="btn btn-primary" type="submit">Search</button>
-                        </form>
-                    </li>
-                </ul>
-                <ul class="nav navbar-nav navbar-right">
-                    <li class=nav-item">
-                        <form method="get" action="login.php">
-                            <button class="btn btn-primary" type="submit">Login</button>
-                        </form>
-                    </li>
-                    <li class=nav-item">
-                        <form method="get" action="registration.php">
-                            <button class="btn btn-primary" type="submit">Sign Up</button>
-                        </form>
-                    </li>
-                </ul>
-            </div>
-        </div>
-    </nav>
-</header>
+     <nav class='navbar navbar-expand-md navbar-dark fixed-top bg-dark'>
+         <div class="container-fluid">
+             <a class="navbar-brand" href="#">Team Alpha Website</a>
+             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-                       controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+                 <span class="navbar-toggler-icon"></span>
+             </button>
+             <div class="collapse navbar-collapse" id="navbarCollapse">
+                 <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
+                     <li class="nav-item">
+                         <a class="nav-link" href="homepage.php">Home</a>
+                     </li>
+                     <li class="nav-item">
+                         <a class="nav-link" href="#">Repair Tickets</a>
+                     </li>
+                     <li class="nav-item">
+                         <a class="nav-link" href="postARoom.php">Post a Room</a>
+                     </li>
+                     <li class="nav-item">
+                         <form method="get" action="#">
+                             <input type="text" id="searchText" name="searchText" placeholder="Search...">
+                             </input>
+                             <button class="btn btn-primary" type="submit">Search</button>
+                         </form>
+                     </li>
+             <?php
+             if (array_key_exists("firstName", $_SESSION)) {
+                 echo "<li class='nav-item'><p class='m-2 text-white'>Logged in as: "
+                    , $_SESSION["firstName"]
+                    , "!</p></li>";
+             }
+             ?>
+                 </ul>
+                 <ul class="nav navbar-nav navbar-right">
+             <?php
+                     if (isset($_SESSION["verificaitonTime"])) {
+                         echo "<li class='nav-item'>"
+                         , "<form method='get' action='account.php'>"
+             , "<button class='btn btn-primary' type='submit'>Account</button>"
+                         , "</form>"
+             , "</li>"
+             , "<li class='nav-item'>"
+                         , "<form method='get' action='logout-handler.php'>"
+                         , "<button class='btn btn-primary' type='submit'>Logout</button>"
+                         , "</form>"
+                         , "</li>";
+                     } else {
+                         echo "<li class='nav-item'>"
+                            , "<form method='get' action='login.php''>"
+                            , "<button class='btn btn-primary' type='submit'>Login</button>"
+                            , "</form>"
+                            , "</li>"
+                            , "<li class=nav-item'>"
+                            , "<form method='get' action='registration.php'>"
+                            , "<button class='btn btn-primary' type='submit'>Sign Up</button>"
+                            , "</form>"
+                            , "</li>";
+                     }
+ 
+                     ?>
+                 </ul>
+             </div>
+         </div>
+     </nav>
+ </header>
 
 <div id="bodyContainer" class="container-fluid">
 
@@ -169,8 +203,10 @@ mysqli_close($con);
                         <div class="card-body">
                             <h3 class="card-title"><?php echo htmlspecialchars($city), ", " , htmlspecialchars($state); ?></h3>
                             <p class="card-text">This is just an exampe of somewhere that the location might be.</p>
-                            <form method="get" action="#">
-                                <button class="btn btn-primary" type="submit">Reserve Now</button>
+                            <form method="post" action="reservation-handler.php" id="reservationForm">
+				<input type="hidden" name="roomID" value='<?php echo $roomID ?>'/>
+				<input type="hidden" name="cost" value='<?php echo $price; ?>'/>
+                                <button class="btn btn-primary" type="submit" onclick="document.getElementById('reservationForm').submit();">Reserve Now</button>
                             </form>
                         </div>
                     </div>
