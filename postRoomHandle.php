@@ -124,6 +124,8 @@ foreach ($amenNums AS $amenNum) {
 
 }
 
+header("Location: homepage.php");
+
 /* *********************** PRINTING TABLE OUTPUT FOR TESTING. *********************** */
 
 $query = "SELECT * FROM Rooms";

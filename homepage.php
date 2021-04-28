@@ -110,7 +110,7 @@ require_once("utils/constants.php");
         <div class='carousel-inner' role='listbox'>
             <div class='carousel-item active'>
                 <div class='view'>
-                   <img src='https://images.pexels.com/photos/262048/pexels-photo-262048.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260' alt='Fake Photo' alt='First slide' width="100%" height="100%">
+                   <img src='http://cdn.home-designing.com/wp-content/uploads/2016/10/Marilyn-Monroe-portrait-black-and-white-wall-decor.jpg' alt='Fake Photo' alt='First slide' width="100%" height="100%">
                     <div class='mask rgba-black-light'></div>
                 </div>
                 <div class='container'>
@@ -123,7 +123,7 @@ require_once("utils/constants.php");
             </div> <!-- /carousel item one -->
             <div class='carousel-item'>
                 <div class='view'>
-                    <img src='https://images.unsplash.com/photo-1483490109305-acf13776a5fa?ixlib=rb-1.2.1&ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&auto=format&fit=crop&w=2252&q=80' alt='Fake Photo' alt='Second slide'>
+                    <img src='https://hips.hearstapps.com/clv.h-cdn.co/assets/17/08/1487691224-one-closet-four-ways-guest-bedroom-0916.jpg' alt='Fake Photo' alt='Second slide'>
                     <div class='mask rgba-black-light'></div>
                 </div>
                 <div class='container'>
@@ -135,7 +135,7 @@ require_once("utils/constants.php");
                 </div>
             </div> <!-- /carousel item two -->
             <div class='carousel-item'>
-            <svg class="bd-placeholder-img" width="100%" height="100%" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" preserveAspectRatio="xMidYMid slice" focusable="false"><rect width="100%" height="100%" fill="#777"/></svg>
+            <svg class="bd-placeholder-img" width="100%" height="100%" xmlns="https://st.hzcdn.com/simgs/pictures/bedrooms/olana-drive-hills-and-grant-img~3571422f085097cb_14-8470-1-3d7769a.jpg" aria-hidden="true" preserveAspectRatio="xMidYMid slice" focusable="false"><rect width="100%" height="100%" fill="#777"/></svg>
                 <div class='container'>
                     <div class='carousel-caption'>
                         <h1>Book your stay today!</h1>
@@ -162,27 +162,27 @@ require_once("utils/constants.php");
     <div class='container marketing'>
         <div class='row'>
             <div class='col-lg-4'>
-                <img class='rounded-circle' src='photos/fakeBedRoomPicture.png' width='140px' height='140px'></img>
+                <img class='rounded-circle' src='https://st.hzcdn.com/simgs/pictures/bedrooms/olana-drive-hills-and-grant-img~3571422f085097cb_14-8470-1-3d7769a.jpg' width='140px' height='140px'></img>
                 <h2>A Room in Roanoke</h2>
-                <p>The is the first sample room that is going to be displayed. This could be a short discription a user provides about their room or something. And then the view details button could take the user the the registration page for this specific room.</p>
+                <p>Quite cozy if I do say so myself!</p>
 		<form method="get" action="viewARoom.php" id="homepageRoom1">
 		    <input type="hidden" name="roomID" id="hiddenInput1"/>
 		    <button class="btn btn-secondary" onclick="document.getElementById('hiddenInput1').value = 1; document.getElementById('homepageRoom1').submit();">View details &raquo;</button>
 		</form>
             </div>
             <div class='col-lg-4'>
-                <img class='rounded-circle' src='photos/fakeBedRoomPicture_2.png' width='140px' height='140px'></img>
+                <img class='rounded-circle' src='https://st.hzcdn.com/simgs/pictures/bedrooms/modern-farmhouse-upstate-crisp-architects-img~8eb1a0030ce5bb4f_14-1027-1-8da1692.jpg' width='140px' height='140px'></img>
                 <h2>A Room in Radford</h2>
-                <p>The is the first sample room that is going to be displayed. This could be a short discription a user provides about their room or something. And then the view details button could take the user the the registration page for this specific room.</p>
+                <p>You could live here next semester!</p>
 		<form method="get" action="viewARoom.php" id="homepageRoom2" onsubmit="document.getElementById('hiddenInput1').value == 2">
 		    <input type="hidden" name="roomID" id="hiddenInput2"/>
 		    <button class="btn btn-secondary" onclick="document.getElementById('hiddenInput2').value = 2; document.getElementById('homepageRoom2').submit();">View details &raquo;</button>
 		</form>
             </div>
             <div class='col-lg-4'>
-                <img class='rounded-circle' src='photos/fakeBedRoomPicture_3.png' width='140px' height='140px'></img>
+                <img class='rounded-circle' src='https://cdn.trendir.com/wp-content/uploads/old/interiors/2016/01/26/light-grey-bedroom-with-a-view-bolzan-handsome-big.jpg' width='140px' height='140px'></img>
                 <h2>A Room in Blacksburg</h2>
-                <p>The is the first sample room that is going to be displayed. This could be a short discription a user provides about their room or something. And then the view details button could take the user the the registration page for this specific room.</p>
+                <p>this one costs more just because it's in Blacksburg.</p>
 		<form method="get" action="viewARoom.php" id="homepageRoom3" onsubmit="document.getElementById('hiddenInput1').value == 3">
 		    <input type="hidden" name="roomID" id="hiddenInput3"/>
 		    <button class="btn btn-secondary" onclick="document.getElementById('hiddenInput3').value = 3; document.getElementById('homepageRoom3').submit();">View details &raquo;</button>
@@ -196,7 +196,7 @@ require_once("utils/constants.php");
     <div class="row featurette">
         <div class="col-md-7">
             <h2 class="featurette-heading">Roanoke. <span class="text-muted">The Star City.</span></h2>
-            <p class="lead">Insert text here</p>
+            <p class="lead">Roanoke is a city in the Blue Ridge Mountains of southwest Virginia. It’s known for the Roanoke Star, also known as the Mill Mountain Star, a neon landmark overlooking the city from the summit of Mill Mountain. The surrounding park area is home to trails, picnic areas and the Mill Mountain Zoo. Downtown, the Taubman Museum of Art highlights work by American artists like Thomas Eakins and John Singer Sargent.</p>
         </div>
         <div = class="col-md-5">
             <img id="featurettePhoto" src="https://www.roanokeva.gov/ImageRepository/Document?documentId=12009" width="500px" height="500"></img>
@@ -208,7 +208,7 @@ require_once("utils/constants.php");
     <div class="row featurette">
         <div class="col-md-7 order-md-2">
             <h2 class="featurette-heading">Radford. <span class="text-muted">Home of the Highlanders.</span></h2>
-            <p class="lead">One of the places we "opperate"!</p>
+            <p class="lead">Radford is an independent city in the U.S. state of Virginia. As of 2010, the population was 16,408 by the United States Census Bureau. For statistical purposes, the Bureau of Economic Analysis combines the city of Radford with neighboring Montgomery County.</p>
         </div>
         <div class="col-md-5">
             <img id="featurettePhoto" src="https://www.insidehighered.com/sites/default/server_files/media/image_34.png" width="500px" height="500"></img>
@@ -220,7 +220,7 @@ require_once("utils/constants.php");
     <div class="row featurette">
         <div class="col-md-7">
             <h2 class="featurette-heading">Blacksburg. <span class="text-muted">Home of the Hokies.</span></h2>
-            <p class="lead">One of the OTHER places we "opperate"!</p>
+            <p class="lead">Blacksburg is an incorporated town in Montgomery County, Virginia, United States, with a population of 42,620 at the 2010 census. Blacksburg, as well as the surrounding county, is dominated economically and demographically by the presence of Virginia Tech.</p>
         </div>
         <div class="col-md-5">
             <img id="featurettePhoto" src="https://static.onecms.io/wp-content/uploads/sites/24/2019/10/GettyImages-533209873-2000.jpg" width="500px" height="500"></img>

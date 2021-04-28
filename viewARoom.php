@@ -17,8 +17,6 @@ require_once("database-connection.php");
 
 $roomID = $_GET["roomID"];
 
-echo "<br /> The roomID is: $roomID <br />";
-
 $con = connectToDatabase();
 if (!$con) echo "Something went wrong with the database connection<br/>";
 
@@ -26,8 +24,6 @@ if (!$con) echo "Something went wrong with the database connection<br/>";
 //
 $query = "SELECT * FROM Rooms
  	  WHERE Room_ID = $roomID";
-
-echo "<br /> $query <br />";
 
 $allRows = mysqli_query($con, $query);
 if (!$allRows) {
@@ -37,7 +33,6 @@ if (!$allRows) {
     if (!$oneRow) {
 	echo "The Rooms query returned 0 rows.<br/>";
     } else {
-	echo "Rooms Query returned fine.<br/>";
 	$userID = $oneRow["User_ID"];
 	$title = $oneRow["Title"];
 	$desc = $oneRow["Description"];
@@ -47,7 +42,6 @@ if (!$allRows) {
 	$sqft = $oneRow["Square_footage"];
 	$city = $oneRow["City"];
 	$state = $oneRow["State"];
-	echo $bathrooms, "<br/>";
     }
 }
 
@@ -56,7 +50,6 @@ if (!$allRows) {
 $query = "SELECT * FROM Users
 	  WHERE User_ID = $userID";
 
-echo "<br /> $query <br />";
 
 $allRows = mysqli_query($con, $query);
 if (!$allRows) {
@@ -66,7 +59,6 @@ if (!$allRows) {
     if (!$oneRow) {
 	echo "The Users query returned 0 rows.<br/>";
     } else {
-	echo "Users Query returned fine.<br/>";
 	$firstName = $oneRow["F_Name"];
 	$lastName  = $oneRow["L_Name"];
 	$bio = $oneRow["Bio"];
@@ -81,19 +73,16 @@ $query = "SELECT a.Amen_name FROM Room_Amenities ra
 	  INNER JOIN Amenities a ON ra.Amen_ID = a.Amen_ID
 	  WHERE Room_ID = $roomID";
 
-echo "<br /> $query <br />";
 
 $allRows = mysqli_query($con, $query);
 if (!$allRows) {
     echo "The amen_name query failed.<br />";
 } else {
     while ($oneRow = mysqli_fetch_assoc($allRows)) {
-	echo "amen_name Query returned fine.<br/>";
 	array_push($amenities, $oneRow["Amen_name"]);
     }
 }
 
-echo var_dump($amenities), "<br />";
 
 
 mysqli_close($con);
@@ -249,7 +238,7 @@ mysqli_close($con);
                 <!-- Items in the carousel. -->
                 <div class="carousel-inner">
                     <div class="carousel-item active">
-                        <img src="photos/fakeBedRoomPicture.png" class="d-block w-100">
+                        <img src="http://cdn.home-designing.com/wp-content/uploads/2016/10/Marilyn-Monroe-portrait-black-and-white-wall-decor.jpg" class="d-block w-100">
                     </div>
                     <div class="carousel-item">
                         <img src="photos/fakeBedRoomPicture_2.png" class="d-block w-100">
