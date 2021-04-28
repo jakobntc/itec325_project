@@ -85,27 +85,27 @@
                 <label for="amenities">Amenities *</label>
                 <div class="row justify-content-center">
                     <table id="amenities" name="amenities">
-                        <tr>
-                            <th><input type="checkbox" id="ac">Air Conditioning</th>
-                            <th><input type="checkbox" id="washerDryer">Washer and Dryer</th>
-                            <th><input type="checkbox" id="petsAllowed">Pets Allowed</th>
-                        </tr>
-                        <tr>
-                            <th><input type="checkbox" id="dishwasher">Dishwasher</th>
-                            <th><input type="checkbox" id="balcony">Balcony</th>
-                            <th><input type="checkbox" id="garage">Garage</th>
-                        </tr>
-                        <tr>
-                            <th><input type="checkbox" id="pool">Swimming Pool</th>
-                            <th><input type="checkbox" id="fitnessCenter">Fitness Center</th>
-                            <th><input type="checkbox" id="privateEntrance">Private Entrance</th>
-                        </tr>
+		        <tr>
+		            <th><input type="checkbox" name="ac" id="ac" value="Air Conditioning">Air Conditioning</th>
+		            <th><input type="checkbox" name="washerDryer" id="washerDryer" value="Washer and Dryer">Washer and Dryer</th>
+		            <th><input type="checkbox" name="petsAllowed" id="petsAllowed" value="Pets Allowed">Pets Allowed</th>
+		        </tr>
+		        <tr>
+		            <th><input type="checkbox" name="dishwasher" id="dishwasher" value="Dishwasher">Dishwasher</th>
+		            <th><input type="checkbox" name="balcony" id="balcony" value="Balcony">Balcony</th>
+		            <th><input type="checkbox" name="garage" id="garage" value="Garage">Garage</th>
+		        </tr>
+		        <tr>
+		            <th><input type="checkbox" name="pool" id="pool" value="Swimming Pool">Swimming Pool</th>
+		            <th><input type="checkbox" name="fitnessCenter" id="fitnessCenter" value="Fitness Center">Fitness Center</th>
+		            <th><input type="checkbox" name="privateEntrance" id="privateEntrance" value="Private Entrance">Private Entrance</th>
+		        </tr>
                     </table>
                 </div>
                 <div class="row">
                     <div class="col">
                         <label for="smoking">Smoking allowed</label>
-                        <input type="checkbox" id="smoking" style="margin-top: 30px; margin-left: 20px">
+                        <input type="checkbox" id="smoking" name="smokingAllowed" value="Smoking Allowed" style="margin-top: 30px; margin-left: 20px">
                     </div>
                 </div>
                 <div class="row">
