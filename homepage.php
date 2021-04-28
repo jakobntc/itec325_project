@@ -165,13 +165,17 @@ require_once("utils/constants.php");
                 <img class='rounded-circle' src='photos/fakeBedRoomPicture.png' width='140px' height='140px'></img>
                 <h2>A Room in Roanoke</h2>
                 <p>The is the first sample room that is going to be displayed. This could be a short discription a user provides about their room or something. And then the view details button could take the user the the registration page for this specific room.</p>
-                <p><a class='btn btn-secondary' href='viewARoom.php'>View details &raquo;</a></p>
+		<form method="get" action="viewARoom.php" id="homepageRoom1">
+		    <input type="hidden" name="roomID" id="hiddenInput1"/>
+		    <button class="btn btn-secondary" onclick="document.getElementById('hiddenInput1').value = 1; document.getElementById('homepageRoom1').submit();">View details &raquo;</button>
             </div>
             <div class='col-lg-4'>
                 <img class='rounded-circle' src='photos/fakeBedRoomPicture_2.png' width='140px' height='140px'></img>
                 <h2>A Room in Radford</h2>
                 <p>The is the first sample room that is going to be displayed. This could be a short discription a user provides about their room or something. And then the view details button could take the user the the registration page for this specific room.</p>
-                <p><a class='btn btn-secondary' href='viewARoom.php'>View details &raquo;</a></p>
+		<form method="get" action="viewARoom.php" id="homepageRoom2">
+		    <input type="hidden" name="roomID" id="hiddenInput2"/>
+		    <button class="btn btn-secondary" onclick="document.getElementById('hiddenInput2').value = 2; document.getElementById('homepageRoom2').submit();">View details &raquo;</button>
             </div>
             <div class='col-lg-4'>
                 <img class='rounded-circle' src='photos/fakeBedRoomPicture_3.png' width='140px' height='140px'></img>
@@ -179,7 +183,7 @@ require_once("utils/constants.php");
                 <p>The is the first sample room that is going to be displayed. This could be a short discription a user provides about their room or something. And then the view details button could take the user the the registration page for this specific room.</p>
 		<form method="get" action="viewARoom.php" id="homepageRoom3">
 		    <input type="hidden" name="roomID" id="hiddenInput3"/>
-		    <button class="btn btn-secondary" onclick="document.getElementById('hiddenInput3').value = 6; document.getElementById('homepageRoom3').submit();">View details &raquo;</button>
+		    <button class="btn btn-secondary" onclick="document.getElementById('hiddenInput3').value = 3; document.getElementById('homepageRoom3').submit();">View details &raquo;</button>
 		</form>
             </div>
         </div>
