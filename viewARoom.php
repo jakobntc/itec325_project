@@ -8,20 +8,25 @@ require_once("database-connection.php");
 //
 $roomID = $_GET["roomID"];
 
+echo "<br /> The roomID is: $roomID <br />";
+
 $con = connectToDatabase();
-if (!$con) echo "Something went wrong<br/>";
+if (!$con) echo "Something went wrong with the database connection<br/>";
 
 $query = "SELECT * FROM Rooms
  	  WHERE Room_ID = $roomID";
+
+echo "<br /> $query <br />";
+
 $allRows = mysqli_query($con, $query);
 if (!$allRows) {
-    echo "The query failed.";
+    echo "The Rooms query failed<br />";
 } else {
     $oneRow = mysqli_fetch_array($allRows);
     if (!$oneRow) {
-	echo "The query returned 0 rows.<br/>";
+	echo "The Rooms query returned 0 rows.<br/>";
     } else {
-	echo "Query returned fine.<br/>";
+	echo "Rooms Query returned fine.<br/>";
 	$userID = $oneRow["User_ID"];
 	$title = $oneRow["Title"];
 	$desc = $oneRow["Description"];
@@ -37,15 +42,18 @@ if (!$allRows) {
 //
 $query = "SELECT * FROM Users
 	  WHERE User_ID = $userID";
+
+echo "<br /> $query <br />";
+
 $allRows = mysqli_query($con, $query);
 if (!$allRows) {
-    echo "The query failed.";
+    echo "The User query failed.<br />";
 } else {
     $oneRow = mysqli_fetch_array($allRows);
     if (!$oneRow) {
-	echo "The query returned 0 rows.<br/>";
+	echo "The Users query returned 0 rows.<br/>";
     } else {
-	echo "Query returned fine.<br/>";
+	echo "Users Query returned fine.<br/>";
 	$firstName = $oneRow["F_Name"];
 	$lastName  = $oneRow["L_Name"];
     }
@@ -58,17 +66,20 @@ $amenities = array();
 $query = "SELECT a.Amen_name FROM Room_Amenities ra
 	  INNER JOIN Amenities a ON ra.Amen_ID = a.Amen_ID
 	  WHERE Room_ID = $roomID";
+
+echo "<br /> $query <br />";
+
 $allRows = mysqli_query($con, $query);
 if (!$allRows) {
-    echo "The query failed.";
+    echo "The amen_name query failed.<br />";
 } else {
     while ($oneRow = mysqli_fetch_assoc($allRows)) {
-	echo "Query returned fine.<br/>";
+	echo "amen_name Query returned fine.<br/>";
 	array_push($amenities, $oneRow["Amen_name"]);
     }
 }
 
-var_dump($amenities);
+echo var_dump($amenities), "<br />";
 
 
 mysqli_close($con);
