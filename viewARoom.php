@@ -34,6 +34,8 @@ if (!$allRows) {
 	$bedrooms = $oneRow["Number_of_Bedrooms"];
 	$bathrooms = $oneRow["Number_of_Bathrooms"];
 	$sqft = $oneRow["Square_footage"];
+	$city = $oneRow["City"];
+	$state = $oneRow["State"];
 	echo $bathrooms, "<br/>";
     }
 }
@@ -165,7 +167,7 @@ mysqli_close($con);
                     <div class="card text-center">
                         <h1 class="card-header">Location</h1>
                         <div class="card-body">
-                            <h3 class="card-title">Roanoke</h3>
+                            <h3 class="card-title"><?php echo htmlspecialchars($city), ", " , htmlspecialchars($state); ?></h3>
                             <p class="card-text">This is just an exampe of somewhere that the location might be.</p>
                             <form method="get" action="#">
                                 <button class="btn btn-primary" type="submit">Reserve Now</button>
