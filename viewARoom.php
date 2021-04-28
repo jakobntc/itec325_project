@@ -183,6 +183,16 @@ mysqli_close($con);
 
 <div id="bodyContainer" class="container-fluid">
 
+    <div class="row m-2">
+        <div class="col-sm">
+            <h1 class="display-1 text-center text-danger"><?php 
+					      if (isset($_GET["reserved"])) {
+					          echo "You have already reserved this room!";
+					      }
+					      ?></h1>
+        </div>
+    </div>
+
     <!-- Row 1 -->
     <div class="row m-2">
         <div class="col-sm">

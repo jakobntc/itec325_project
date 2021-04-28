@@ -11,6 +11,7 @@ if ( (time() - $_SESSION["verificaitonTime"]) >= 800) {
 
 require_once("utils/utils.php");
 require_once("utils/constants.php");
+require_once("database-connection.php");
 ?>
 
 <!DOCTYPE html>
@@ -126,8 +127,48 @@ require_once("utils/constants.php");
 
             <h1>Current Reservations</h1>
 
-            <div id="row" style="display: table;">
-                <p style="margin-left: 50px;"></p>
+            <div id="row">
+		<div class="col-sm-3">
+
+
+		<?php
+
+		$con = connectToDatabase();
+		$query = "SELECT * FROM Rooms r
+			  INNER JOIN Reservations re ON r.Room_ID = re.Room_ID
+			  WHERE Reserving_User_ID = " . $_SESSION["userID"];
+
+		$allRows = mysqli_query($con, $query);
+		if (!$allRows) {
+		    echo "SOMETHING WENT WRONG.";
+		} else {
+		    while ($oneRow = mysqli_fetch_assoc($allRows)) {
+			$roomID = $oneRow["Room_ID"];
+			echo "<div class='card'>"
+			   , "<h3 class='card-header'>"
+			   , $oneRow["Title"]
+			   , "</h3>"
+			   , "<img class='card-img-top' src='#' alt='Photo of the room'/>"
+			   , "<div class='card-body'>"
+		 	   , "<p class='card-title'>"
+			   , $oneRow["Description"]
+		 	   , "</p>"
+			   , "<form method='get' action='viewARoom.php' id='viewRoom$roomID'>"
+			   , "<input type='hidden' value='$roomID' name='roomID'/>"
+			   , "<button class='btn btn-primary' onclick='document.getElementById(" . '"viewRoom' . $roomID . '").submit();' . "'>"
+			   , "View Details &raquo;"
+			   , "</button>"
+			   , "</form>"
+			   , "</div>"
+			   , "</div>"
+			   , "<br />";
+		    }
+		}
+
+		?>
+
+
+
                 <div class="card" style="width: 300px; display: table-cell; margin-left: 10px;">
                     <img src="photos/chicagoHouse.jpg" style="width: 300px; height: 200px;" class="card-img-top" alt="...">
                     <div class="card-body">
@@ -136,6 +177,7 @@ require_once("utils/constants.php");
                         <a href="#" class="btn btn-primary">Visit Page</a>
                     </div>
                 </div>
+		</div>
             </div>
             
 

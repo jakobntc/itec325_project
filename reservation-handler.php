@@ -19,27 +19,36 @@ if ( (time() - $_SESSION["verificaitonTime"]) >= 800) {
     $userID = $_SESSION["userID"];
     $roomID = $_POST["roomID"];
     $cost   = $_POST["cost"];
-    
-    $insert = "INSERT INTO Reservations ( Reserving_User_ID
-    				    , Room_ID
-    				    , Total_Cost
-    				    )
-    	   VALUES ( $userID
-    		  , $roomID
-    		  , $cost
-    		  )";
-    echo "<br /> $insert <br />";
-    
-    $result = mysqli_query($con, $insert);
-    if (!$result) {
-        echo "Something went wrong when trying to insert the reservation.<br />";
+
+    $query = "SELECT * FROM Reservations
+	      WHERE Room_ID = $roomID";
+    $allRows = mysqli_query($con, $query);
+    if (!$allRows) echo "Something went wrong with the reservations query.<br />";
+    $oneRow = mysqli_fetch_array($allRows);
+
+    if (!$oneRow) {
+	echo "No rows returned. User has not reserved this room.";
+        $insert = "INSERT INTO Reservations ( Reserving_User_ID
+        				    , Room_ID
+        				    , Total_Cost
+        				    )
+        	   VALUES ( $userID
+        		  , $roomID
+        		  , $cost
+        		  )";
+        echo "<br /> $insert <br />";
+        
+        $result = mysqli_query($con, $insert);
+        if (!$result) {
+            echo "Something went wrong when trying to insert the reservation.<br />";
+        } else {
+            echo "Everything worked fine.<br />";
+        }
+        mysqli_close($con);
+	header("Location: homepage.php");
     } else {
-        echo "Everything worked fine.<br />";
+        mysqli_close($con);
+	header("Location: viewARoom.php?reserved=true&roomID=$roomID");
     }
-    
-    mysqli_close($con);
 }
-
-echo "HELLO??";
-
 ?>
