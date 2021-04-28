@@ -83,6 +83,9 @@ require_once("utils/constants.php");
                         <a class="nav-link" href="#">Repair Tickets</a>
                     </li>
                     <li class="nav-item">
+                        <a class="nav-link" href="viewAllRooms.php">View all Rooms</a>
+                    </li>
+                    <li class="nav-item">
                         <a class="nav-link" href="#">Post a Room</a>
                     </li>
                     <li class="nav-item">
