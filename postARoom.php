@@ -120,12 +120,6 @@
             </div>
         </div>
     </div>
-
-	<form action="postRoomHandle.php" id='postRoomInfo' method="post" style="margin-top: 50px">
-
-		
-
-        
 	</form>
    </body>
  </html>

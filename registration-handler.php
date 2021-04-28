@@ -1,6 +1,5 @@
 <?php
 
-//php_ini('session.cookie_secure',true);
 session_start();
 
 require_once("database-connection.php");
@@ -21,8 +20,6 @@ $confirmPassword = $_POST["passwordConfirmation"];
 $firstName = $_POST["firstName"];
 $lastName = $_POST["lastName"];
 $email = $_POST["email"];
-
-$_SESSION["firstName"] = $firstName;
 
 $usernameConflict = checkUsername($username);
 $emailConflict = checkEmail($email);
@@ -46,7 +43,8 @@ if (!$usernameConflict && !$emailConflict) {
         echo "Insert failed.</br>";
     } else {
         echo "Insert Succedded.</br>";
-	$_SESSION["loggedIn"] = true;
+	$_SESSION["verificaitonTime"] = time();
+	$_SESSION["firstName"] = $firstName;
     }
 } else {
     if ($usernameConflict) header("Location: registration.php?error=username&firstName=$firstName&lastName=$lastName&email=$email");
@@ -81,4 +79,5 @@ if (!$result) {
 
 mysqli_close($con);
 echo "Connection closed";
+//header("Location: homepage.php")
 ?>

@@ -2,7 +2,7 @@
 error_reporting(E_ALL);
 session_start();
 
-if ( (time() - $_SESSION["verificaitonTime"]) >= 90) {
+if ( (time() - $_SESSION["verificaitonTime"]) >= 800) {
     session_unset();
     session_destroy();
     setcookie( session_name(), "", 1, "/");
@@ -67,7 +67,12 @@ require_once("utils/constants.php");
 		    <?php
                     if (isset($_SESSION["verificaitonTime"])) {
                         echo "<li class='nav-item'>"
-                    	, "<form method='get' action='#'>"
+                    	, "<form method='get' action='account.php'>"
+			, "<button class='btn btn-primary' type='submit'>Account</button>"
+                    	, "</form>"
+			, "</li>"
+			, "<li class='nav-item'>"
+                    	, "<form method='get' action='logout-handler.php'>"
                     	, "<button class='btn btn-primary' type='submit'>Logout</button>"
                     	, "</form>"
                     	, "</li>";
@@ -110,7 +115,7 @@ require_once("utils/constants.php");
                 </div>
                 <div class='container'>
                     <div class='carousel-caption'>
-                        <h3 class='h3-responsive'>Book your stay today!</h3>
+                        <h1>Book your stay today!</h1>
                         <p>This room could be where you stay on your next trip!</p>
                         <p><a class='btn btn-lg btn-primary' href='#'>Book now!</a></p>
                     </div>
@@ -123,7 +128,7 @@ require_once("utils/constants.php");
                 </div>
                 <div class='container'>
                     <div class='carousel-caption'>
-                        <h3 class='h3-responsive'>Book your stay today!</h3>
+                        <h1>Book your stay today!</h1>
                         <p>This room could be where you stay on your next trip!</p>
                         <p><a class='btn btn-lg btn-primary' href='#'>Book now!</a></p>
                     </div>
