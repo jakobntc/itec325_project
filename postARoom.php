@@ -51,7 +51,7 @@
             </tr>
         </table><br>
 
-        <th><input type="checkbox" id="smoking" value="Smoking Allowed">Smoking allowed *</th><br><br>
+        <th><input type="checkbox" id="smoking" name="smokingAllowed" value="Smoking Allowed">Smoking allowed *</th><br><br>
 
         <label for="img">Select Photos:</label>
         <input type="file" id="img" name="img" accept="image/*"><br><br>
