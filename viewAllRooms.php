@@ -11,6 +11,7 @@ if ( (time() - $_SESSION["verificaitonTime"]) >= 800) {
 
 require_once("utils/utils.php");
 require_once("utils/constants.php");
+require_once("database-connection.php");
 ?>
 
 <!DOCTYPE html>
@@ -48,9 +49,6 @@ require_once("utils/constants.php");
                 <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
                     <li class="nav-item">
                         <a class="nav-link" href="homepage.php">Home</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="viewAllRooms.php">View all Rooms</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="#">Repair Tickets</a>
@@ -101,98 +99,41 @@ require_once("utils/constants.php");
     </nav>
 </header>
 
-    <div class="wrapper">
-        <!-- Sidebar  -->
-        <nav id="sidebar">
-            <div class="sidebar-header">
-                <img id="profileIMG" src="photos/profile.jpg" alt="Profile Picture">
-                <h3 id="nameTxt"><?php echo $_SESSION["firstName"], " ", $_SESSION["lastName"] ?></h3>
-            </div>
+    <h3 style="margin-top: 50px">Available Rooms</h3>
+    
+    <?php
 
-            <ul class="list-unstyled components">
-                <li>
-                    <a href="account.php">Account</a>
-                </li>
-                <li>
-                    <a href="currentReservations.php">Current Reservations</a>
-                </li>
-                <li>
-                    <a href="#" style="pointer-events: none; background-color: #0061b5">Past Reservations</a>
-                </li>
-            </ul>
-        </nav>
+    $con = connectToDatabase();
+    $query = "SELECT * FROM Rooms";
 
-        <!-- Page Content  -->
-        <div id="content" style="background-color: #f2f2f2;">
+    $allRows = mysqli_query($con, $query);
+    if (!$allRows) {
+        echo "SOMETHING WENT WRONG.";
+    } else {
+        while ($oneRow = mysqli_fetch_assoc($allRows)) {
+        $roomID = $oneRow["Room_ID"];
+        echo '<div class="card" style="width: 300px; display: table-cell; margin-left: 10px;">'
+        , "<img class='card-img-top' src='photos/chicagoHouse.jpg' alt='Photo of the room'/>"
+        , "<div class='card-body'>"
+        , "<h5 class='card-title'>"
+        , $oneRow["Title"]
+        , "</h5>"
+            , "<p class='card-text'>"
+        , $oneRow["Description"]
+            , "</p>"
+        , "<form method='get' action='viewARoom.php' id='viewRoom$roomID'>"
+        , "<input type='hidden' value='$roomID' name='roomID'/>"
+        , "<button class='btn btn-primary' onclick='document.getElementById(" . '"viewRoom' . $roomID . '").submit();' . "'>"
+        , "View Details &raquo;"
+        , "</button>"
+        , "</form>"
+        , "</div>"
+        , "</div>"
+        , "<br />";
+        }
+    }
 
-            <h1>Past Reservations</h1>
-
-            <?php
-
-		    $con = connectToDatabase();
-            $query = "SELECT * FROM Rooms r
-			  INNER JOIN Reservations re ON r.Room_ID = re.Room_ID
-			  WHERE Reserving_User_ID = " . $_SESSION["userID"];
-
-            $allRows = mysqli_query($con, $query);
-            if (!$allRows) {
-                echo "SOMETHING WENT WRONG.";
-            } else {
-                while ($oneRow = mysqli_fetch_assoc($allRows)) {
-                $roomID = $oneRow["Room_ID"];
-                echo "<div class='card'>"
-                , "<h3 class='card-header'>"
-                , $oneRow["Title"]
-                , "</h3>"
-                , "<img class='card-img-top' src='#' alt='Photo of the room'/>"
-                , "<div class='card-body'>"
-                    , "<p class='card-title'>"
-                , $oneRow["Description"]
-                    , "</p>"
-                , "<form method='get' action='viewARoom.php' id='viewRoom$roomID'>"
-                , "<input type='hidden' value='$roomID' name='roomID'/>"
-                , "<button class='btn btn-primary' onclick='document.getElementById(" . '"viewRoom' . $roomID . '").submit();' . "'>"
-                , "View Details &raquo;"
-                , "</button>"
-                , "</form>"
-                , "</div>"
-                , "</div>"
-                , "<br />";
-                }
-            }
-
-            ?>
-
-            <!-- <div id="row" style="display: table;">
-                <div class="card" style="width: 300px; display: table-cell;">
-                    <img src="photos/miamiHouse.jpg" style="width: 300px; height: 200px;" class="card-img-top" alt="...">
-                    <div class="card-body">
-                        <h5 class="card-title">Miami FL</h5>
-                        <p class="card-text">A beautiful home in the heart of Miami</p>
-                        <a href="viewARoom.php" class="btn btn-primary">Visit Page</a>
-                    </div>
-                </div>
-                <p style="margin-left: 50px;"></p>
-                <div class="card" style="width: 300px; display: table-cell; margin-left: 10px;">
-                    <img src="photos/hawaiiHouse.jpg" style="width: 300px; height: 200px;" class="card-img-top" alt="...">
-                    <div class="card-body">
-                        <h5 class="card-title">Honolulu HI</h5>
-                        <p class="card-text">A lovely hawaiian home</p>
-                        <a href="viewARoom.php" class="btn btn-primary">Visit Page</a>
-                    </div>
-                </div>
-                <p style="margin-left: 50px;"></p>
-                <div class="card" style="width: 300px; display: table-cell; margin-left: 10px;">
-                    <img src="photos/newyorkHouse.jpg" style="width: 300px; height: 200px;" class="card-img-top" alt="...">
-                    <div class="card-body">
-                        <h5 class="card-title">New York NY</h5>
-                        <p class="card-text">A historic New York home</p>
-                        <a href="viewARoom.php" class="btn btn-primary">Visit Page</a>
-                    </div>
-                </div>
-            </div> -->
-
-        </div>
+    ?>
     </div>
 
     <!-- jQuery CDN - Slim version (=without AJAX) -->
@@ -204,19 +145,6 @@ require_once("utils/constants.php");
     <!-- jQuery Custom Scroller CDN -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/malihu-custom-scrollbar-plugin/3.1.5/jquery.mCustomScrollbar.concat.min.js"></script>
 
-    <script type="text/javascript">
-        $(document).ready(function () {
-            $("#sidebar").mCustomScrollbar({
-                theme: "minimal"
-            });
-
-            $('#sidebarCollapse').on('click', function () {
-                $('#sidebar, #content').toggleClass('active');
-                $('.collapse.in').toggleClass('in');
-                $('a[aria-expanded=true]').attr('aria-expanded', 'false');
-            });
-        });
-    </script>
 
 </body>
 

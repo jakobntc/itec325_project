@@ -52,6 +52,9 @@ require_once("database-connection.php");
                         <a class="nav-link" href="homepage.php">Home</a>
                     </li>
                     <li class="nav-item">
+                        <a class="nav-link" href="viewAllRooms.php">View all Rooms</a>
+                    </li>
+                    <li class="nav-item">
                         <a class="nav-link" href="#">Repair Tickets</a>
                     </li>
                     <li class="nav-item">
@@ -106,7 +109,7 @@ require_once("database-connection.php");
         <nav id="sidebar">
             <div class="sidebar-header">
                 <img id="profileIMG" src="photos/profile.jpg" alt="Profile Picture">
-                <h3 id="nameTxt">Name</h3>
+                <h3 id="nameTxt"><?php echo $_SESSION["firstName"], " ", $_SESSION["lastName"] ?></h3>
             </div>
 
             <ul class="list-unstyled components">
@@ -130,7 +133,7 @@ require_once("database-connection.php");
             <div id="row">
 		<div class="col-sm-3">
 
-
+        <div id="row" style="display: table;">
 		<?php
 
 		$con = connectToDatabase();
@@ -144,13 +147,13 @@ require_once("database-connection.php");
 		} else {
 		    while ($oneRow = mysqli_fetch_assoc($allRows)) {
 			$roomID = $oneRow["Room_ID"];
-			echo "<div class='card'>"
-			   , "<h3 class='card-header'>"
-			   , $oneRow["Title"]
-			   , "</h3>"
-			   , "<img class='card-img-top' src='#' alt='Photo of the room'/>"
+			echo '<div class="card" style="width: 300px; display: table-cell; margin-left: 10px;">'
+               , "<img class='card-img-top' src='photos/chicagoHouse.jpg' alt='Photo of the room'/>"
 			   , "<div class='card-body'>"
-		 	   , "<p class='card-title'>"
+               , "<h5 class='card-title'>"
+			   , $oneRow["Title"]
+			   , "</h5>"
+		 	   , "<p class='card-text'>"
 			   , $oneRow["Description"]
 		 	   , "</p>"
 			   , "<form method='get' action='viewARoom.php' id='viewRoom$roomID'>"
@@ -166,17 +169,17 @@ require_once("database-connection.php");
 		}
 
 		?>
+        </div>
 
 
-
-                <div class="card" style="width: 300px; display: table-cell; margin-left: 10px;">
+                <!-- <div class="card" style="width: 300px; display: table-cell; margin-left: 10px;">
                     <img src="photos/chicagoHouse.jpg" style="width: 300px; height: 200px;" class="card-img-top" alt="...">
                     <div class="card-body">
                         <h5 class="card-title">Chicago IL</h5>
                         <p class="card-text">A beautiful Chicago Home</p>
                         <a href="#" class="btn btn-primary">Visit Page</a>
                     </div>
-                </div>
+                </div> -->
 		</div>
             </div>
             
