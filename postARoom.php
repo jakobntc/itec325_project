@@ -106,8 +106,8 @@ require_once("utils/constants.php");
                         <label for="price">Price:</label><br>
                         <label for="bedrooms">Number of Bedrooms:</label>
                         <label for="bathrooms">Number of Bathrooms:</label>
-                        <label for="sqft">Square Feet:</label>
-                        <label for="city">City:</label>
+                        <label for="sqft">Square Feet:</label><br />
+                        <label for="city">City:</label><br />
                         <label for="state">State:</label>
 
                     </div>
