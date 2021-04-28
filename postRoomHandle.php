@@ -10,13 +10,15 @@ $con = connectToDatabase();
 if (!$con) echo "Database connection failed.<br />";
 
 // Information for the Room table
-$userID = $_SESSION["userID"];
-$title = mysqli_real_escape_string($con, $_POST["title"]);
+$userID      = $_SESSION["userID"];
+$title       = mysqli_real_escape_string($con, $_POST["title"]);
 $description = mysqli_real_escape_string($con, $_POST["desc"]);
-$price = mysqli_real_escape_string($con, $_POST["price"]);
-$bedrooms = mysqli_real_escape_string($con, $_POST["bedrooms"]);
-$bathrooms = mysqli_real_escape_string($con, $_POST["bathrooms"]);
-$sqft = mysqli_real_escape_string($con, $_POST["sqft"]);
+$price       = mysqli_real_escape_string($con, $_POST["price"]);
+$bedrooms    = mysqli_real_escape_string($con, $_POST["bedrooms"]);
+$bathrooms   = mysqli_real_escape_string($con, $_POST["bathrooms"]);
+$sqft        = mysqli_real_escape_string($con, $_POST["sqft"]);
+$city  	     = mysqli_real_escape_string($con, $_POST["city"]);
+$state 	     = mysqli_real_escape_string($con, $_POST["state"]);
 
 echo var_dump(array_key_exists("ac", $_POST)), "<br />";
 
@@ -66,6 +68,8 @@ $insert = "INSERT INTO Rooms ( User_ID
 			     , Number_of_Bedrooms
 			     , Number_of_Bathrooms
 			     , Square_footage
+			     , City
+			     , State
 			     )
 	   VALUES ( '$userID'
 		  , '$title'
@@ -74,6 +78,8 @@ $insert = "INSERT INTO Rooms ( User_ID
 		  , $bedrooms
 		  , $bathrooms
 		  , $sqft
+		  , '$city'
+		  , '$state'
 		  )";
 
 echo "<br /> $insert <br />";
