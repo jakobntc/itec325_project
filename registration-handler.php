@@ -10,10 +10,8 @@ $con = connectToDatabase();
 if (!$con) {
     echo "Conneciton failed.</br>";
 } else {
-    echo "Connection successful</br>";
 }
 
-echo "Initializing the variables.</br>";
 $username = mysqli_real_escape_string($con, $_POST["username"]);
 $password = hash("sha256", $_POST["password"]);
 $confirmPassword = $_POST["passwordConfirmation"];
@@ -42,7 +40,6 @@ if (!$usernameConflict && !$emailConflict) {
     if (!$result) {
         echo "Insert failed.</br>";
     } else {
-        echo "Insert Succedded.</br>";
 	$_SESSION["verificaitonTime"] = time();
 	$_SESSION["firstName"] = $firstName;
     }
@@ -78,6 +75,5 @@ if (!$result) {
 
 
 mysqli_close($con);
-echo "Connection closed";
-//header("Location: homepage.php")
+header("Location: homepage.php")
 ?>
