@@ -104,7 +104,7 @@
                         <div class="row">
                             <div class="col">
                                 <h5>Email</h5>
-                                <p>email@email.com</p>
+                                <p><?php echo $_SESSION["email"] ?></p>
                             </div>
                             <div class="col">
                                 <p>Edit</p>
