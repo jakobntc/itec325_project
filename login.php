@@ -49,11 +49,6 @@
                 </ul>
                 <ul class="nav navbar-nav navbar-right">
                     <li class=nav-item">
-                        <form method="get" action="#">
-                            <button class="btn btn-primary" type="submit">Login</button>
-                        </form>
-                    </li>
-                    <li class=nav-item">
                         <form method="get" action="registration.php">
                             <button class="btn btn-primary" type="submit">Sign Up</button>
                         </form>

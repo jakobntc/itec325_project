@@ -4,8 +4,6 @@
 
 require_once("database-connection.php");
 
-// Collecting all of the room information.
-//
 $roomID = $_GET["roomID"];
 
 echo "<br /> The roomID is: $roomID <br />";
@@ -13,6 +11,8 @@ echo "<br /> The roomID is: $roomID <br />";
 $con = connectToDatabase();
 if (!$con) echo "Something went wrong with the database connection<br/>";
 
+// Collecting all of the room information.
+//
 $query = "SELECT * FROM Rooms
  	  WHERE Room_ID = $roomID";
 
@@ -56,6 +56,7 @@ if (!$allRows) {
 	echo "Users Query returned fine.<br/>";
 	$firstName = $oneRow["F_Name"];
 	$lastName  = $oneRow["L_Name"];
+	$bio = $oneRow["Bio"];
     }
 }
 
@@ -230,7 +231,7 @@ mysqli_close($con);
                 <img class="card-img-top" src="#" alt="Photo of Rentor">
                 <div class="card-body">
                     <h3 class="card-title"><?php echo "$firstName $lastName"; ?></h3>
-                    <p class="card-text">This is going to be the person description on their account or something.</p>
+                    <p class="card-text"><?php echo htmlspecialchars($bio); ?></p>
                     <a href="#" class="btn btn-primary">View Profile</a>
                 </div>
             </div>
