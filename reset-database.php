@@ -58,8 +58,8 @@ $dropAndCreateTables = array( "dropReservations" => "DROP TABLE IF EXISTS Reserv
                                                                                            REFERENCES Amenities(Amen_ID)
                                                                                      )"
 			    , "createTicket" =>         "CREATE TABLE Ticket ( Ticket_ID INTEGER AUTO_INCREMENT
+									      , Ticket_type VARCHAR(100)
 									      , Ticket_contact VARCHAR(100)
-									      , Ticket_reason VARCHAR(30)
 									      , Ticket_message VARCHAR(1000)
 									      , CONSTRAINT PK_Ticket (Ticket_ID))"
                             );

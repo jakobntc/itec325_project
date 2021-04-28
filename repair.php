@@ -38,7 +38,7 @@ div1 {text-align: center;}
                         <a class="nav-link" href="homepage.php">Home</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">Repair Tickets</a>
+                        <a class="nav-link" href="repair.php">Repair Tickets</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="#">Post a Room</a>

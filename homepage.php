@@ -36,6 +36,10 @@ require_once("utils/constants.php");
                     <li class="nav-item">
                         <a class="nav-link" href="#">Post a Room</a>
                     </li>
+		    <li class="nav-item">
+                    <a class="nav-link" href="aboutUs.php">About Us</a>
+                    </li>
+
                     <li class="nav-item">
                         <form method="get" action="#">
                             <input type="text" id="searchText" name="searchText" placeholder="Search...">
