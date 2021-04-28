@@ -10,7 +10,8 @@ if (!$con) {
     echo "Connection Successful.\n";
 }
 
-$dropAndCreateTables = array( "dropReservations" => "DROP TABLE IF EXISTS Reservations"
+$dropAndCreateTables = array( "dropCurrReservations" => "DROP TABLE IF EXISTS CurrentReservations"
+                            , "dropPastReservations" => "DROP TABLE IF EXISTS PastReservations"
                             , "dropRoom_Amenities" => "DROP TABLE IF EXISTS Room_Amenities"
                             , "dropRooms" => "DROP TABLE IF EXISTS Rooms"
                             , "dropUsers" => "DROP TABLE IF EXISTS Users"
@@ -23,7 +24,7 @@ $dropAndCreateTables = array( "dropReservations" => "DROP TABLE IF EXISTS Reserv
                                                                    , Email VARCHAR(254) NOT NULL
                                                                    , CONSTRAINT Pk_User PRIMARY KEY (User_ID)
                                                                    )"
-                            , "createReservations" => "CREATE TABLE Reservations ( Reservation_ID INTEGER AUTO_INCREMENT
+                            , "createCurrReservations" => "CREATE TABLE CurrentReservations ( Reservation_ID INTEGER AUTO_INCREMENT
                                                                                  , Reserving_User_ID INTEGER NOT NULL
                                                                                  , Room_ID INTEGER NOT NULL
                                                                                  , Total_Cost DOUBLE NOT NULL
@@ -32,6 +33,15 @@ $dropAndCreateTables = array( "dropReservations" => "DROP TABLE IF EXISTS Reserv
                                                                                  , CONSTRAINT FK_Reserving_User FOREIGN KEY (Reserving_User_ID)
                                                                                      REFERENCES Users(User_ID)
                                                                                  )"
+                            , "createPastReservations" => "CREATE TABLE PastReservations ( Reservation_ID INTEGER AUTO_INCREMENT
+                                                                                , Reserving_User_ID INTEGER NOT NULL
+                                                                                , Room_ID INTEGER NOT NULL
+                                                                                , Total_Cost DOUBLE NOT NULL
+                                                                                , Duration_of_Stay INTEGER NOT NULL
+                                                                                , CONSTRAINT PK_Reservations PRIMARY KEY (Reservation_ID)
+                                                                                , CONSTRAINT FK_Reserving_User FOREIGN KEY (Reserving_User_ID)
+                                                                                    REFERENCES Users(User_ID)
+                                                                                )"
                             , "createRooms" => "CREATE TABLE Rooms ( Room_ID INTEGER AUTO_INCREMENT
                                                                    , User_ID INTEGER NOT NULL
                                                                    , Title VARCHAR(124) NOT NULL
@@ -113,6 +123,14 @@ $insert = "INSERT INTO Users ( User_Name
                   , 'Jakob'
                   , 'Clapsaddle'
                   , 'jclapsaddle@radford.edu'
+                  ),
+                  ( 'josephbrewer'
+                  , '"
+                  . hash("sha256", "password123")
+                  . "'
+                  , 'JT'
+                  , 'Brewer'
+                  , 'jbrewer@email.com'
                   )";
 
 $result = mysqli_query($con, $insert);
@@ -188,6 +206,41 @@ $loadRooms = array( "room1" => "INSERT INTO Rooms ( User_ID
           );
 
 foreach ($loadRooms AS $insert) {
+
+    $result = mysqli_query($con, $insert);
+    if (!$result) {
+	echo "Something went wrong with the room inserts!<br />";
+    echo "<br /> $insert <br />";
+    } else {
+	echo "Room inserted fine!<br />";
+    }
+}
+
+// Loading some example past reservations
+//
+$loadPastReservations = array( "res1" => "INSERT INTO PastReservations ( Reserving_User_ID
+                                                  , Room_ID
+                                                  , Total_Cost
+                                                  , Duration_of_Stay
+                                                  )
+                                VALUES ( 2
+                                       , 1
+                                       , 100
+                                       , 2
+                                       )"
+		  , "res2" => "INSERT INTO PastReservations ( Reserving_User_ID
+          , Room_ID
+          , Total_Cost
+          , Duration_of_Stay
+          )
+            VALUES ( 2
+            , 2
+            , 150
+            , 2
+            )"
+          );
+
+foreach ($loadPastReservations AS $insert) {
 
     $result = mysqli_query($con, $insert);
     if (!$result) {
