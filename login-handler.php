@@ -31,6 +31,6 @@ if (!$oneRow) {
 }
 
 mysqli_close($con);
-header("Location: https://itec-php01.radford.edu/jclapsaddle/itec325/project/itec325_project/homepage.php");
+header("Location: homepage.php");
 
 ?>
